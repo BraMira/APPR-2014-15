@@ -8,7 +8,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 Naslov mojega projekta je Splošno zdravstveno stanje in splošno zadovoljstvo z življenjem oseb v Sloveniji. 
 
-Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb glede na starost in spol in splošnim zadovoljstvom z življenjem oseb v Sloveniji glede na spol, starost, zdravstveno stanje in glede na regije.  povezana.
+Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb glede na starost in spol in splošnim zadovoljstvom z življenjem oseb v Sloveniji glede na spol, starost, zdravstveno stanje in glede na regije.
 
 Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 

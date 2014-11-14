@@ -1,0 +1,100 @@
+"Samoocena splošnega zadovoljstva z življenjem po: KOHEZIJSKA REGIJA,"
+"SPOL, SPLOŠNO ZDRAVSTVENO STANJE, LETO , SAMOOCENA"
+
+" ";" ";" ";"2012";" ";" ";" ";" ";" ";"2013";" ";" ";" ";" ";" "
+" ";" ";" ";"0-4 (%)";"5-6 (%)";"7-8 (%)";"9-10 (%)";"Neznano (%)";"Povpreèje";"0-4 (%)";"5-6 (%)";"7-8 (%)";"9-10 (%)";"Neznano (%)";"Povpreèje"
+"SLOVENIJA"
+" ";"Spol - SKUPAJ"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";7;26;45;20;1;7.1;8;26;44;21;0;7.0
+" ";" ";"Zelo dobro";2;10;47;40;1;8.1;4;10;48;38;0;8.0
+" ";" ";"Dobro";4;21;54;20;1;7.3;5;24;52;19;0;7.2
+" ";" ";"Srednje";9;40;40;10;1;6.5;9;40;39;12;0;6.5
+" ";" ";"Slabo";19;44;27;8;1;5.7;26;48;19;6;1;5.3
+" ";" ";"Zelo slabo";40;31;16;11;2;4.8;42;29;17;11;2;4.6
+" ";"Moški"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";8;26;45;20;1;7.0;9;27;44;20;0;7.0
+" ";" ";"Zelo dobro";3;10;48;38;1;8.0;5;11;46;38;0;7.9
+" ";" ";"Dobro";5;23;52;18;1;7.2;6;27;51;16;0;7.0
+" ";" ";"Srednje";11;40;40;9;1;6.3;10;41;39;10;0;6.3
+" ";" ";"Slabo";22;43;25;9;1;5.7;28;47;20;5;1;5.1
+" ";" ";"Zelo slabo";46;26;14;12;2;4.5;49;22;14;12;2;4.4
+" ";"Ženske"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";6;27;45;21;1;7.1;8;25;45;22;0;7.1
+" ";" ";"Zelo dobro";1;10;45;42;1;8.2;3;7;52;38;0;8.1
+" ";" ";"Dobro";3;19;55;22;1;7.5;4;20;52;24;0;7.4
+" ";" ";"Srednje";7;41;41;11;0;6.6;8;39;39;14;1;6.6
+" ";" ";"Slabo";17;46;28;8;1;5.7;25;50;18;6;2;5.4
+" ";" ";"Zelo slabo";35;35;18;10;2;5.0;38;32;18;10;1;4.7
+"Vzhodna Slovenija"
+" ";"Spol - SKUPAJ"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";8;28;45;19;1;6.9;9;29;42;20;0;6.9
+" ";" ";"Zelo dobro";2;10;48;39;1;8.0;4;12;44;40;0;8.0
+" ";" ";"Dobro";4;22;54;20;1;7.3;5;24;52;19;0;7.2
+" ";" ";"Srednje";9;42;39;9;1;6.4;8;43;39;10;0;6.4
+" ";" ";"Slabo";20;45;26;7;1;5.6;28;51;15;5;1;5.1
+" ";" ";"Zelo slabo";43;31;16;7;2;4.6;48;27;10;13;1;4.4
+" ";"Moški"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";9;27;44;19;1;6.9;9;30;42;19;0;6.8
+" ";" ";"Zelo dobro";3;10;49;38;0;8.0;5;14;40;40;0;7.9
+" ";" ";"Dobro";5;24;50;20;1;7.2;5;27;52;15;0;7.1
+" ";" ";"Srednje";10;41;41;7;1;6.3;9;45;39;8;0;6.3
+" ";" ";"Slabo";23;41;27;8;2;5.6;30;48;18;3;1;4.9
+" ";" ";"Zelo slabo";46;27;16;10;1;4.5;53;20;13;11;3;4.2
+" ";"Ženske"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";7;29;45;18;1;7.0;8;28;42;22;0;7.0
+" ";" ";"Zelo dobro";2;11;46;41;1;8.1;3;8;49;39;0;8.1
+" ";" ";"Dobro";3;20;57;19;1;7.4;4;21;53;22;0;7.3
+" ";" ";"Srednje";7;43;39;11;0;6.5;6;42;39;13;1;6.6
+" ";" ";"Slabo";18;48;26;6;1;5.7;26;54;13;6;1;5.3
+" ";" ";"Zelo slabo";41;34;15;6;3;4.6;45;31;8;15;0;4.6
+"Zahodna Slovenija"
+" ";"Spol - SKUPAJ"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";6;24;46;23;1;7.2;8;23;47;22;1;7.1
+" ";" ";"Zelo dobro";2;10;46;41;1;8.1;4;7;52;36;0;8.0
+" ";" ";"Dobro";4;20;54;21;1;7.4;6;23;51;20;0;7.2
+" ";" ";"Srednje";9;38;41;11;1;6.5;11;36;40;13;0;6.6
+" ";" ";"Slabo";18;44;27;10;1;5.9;23;44;24;7;2;5.5
+" ";" ";"Zelo slabo";35;31;17;15;2;5.1;30;33;29;6;3;5.0
+" ";"Moški"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";8;24;47;21;1;7.1;8;24;46;21;0;7.1
+" ";" ";"Zelo dobro";3;11;47;39;1;8.0;4;8;51;36;0;7.9
+" ";" ";"Dobro";5;22;55;17;1;7.2;7;26;50;17;0;7.0
+" ";" ";"Srednje";11;38;38;11;2;6.4;13;36;39;12;0;6.4
+" ";" ";"Slabo";20;45;23;11;1;5.9;24;45;23;7;0;5.5
+" ";" ";"Zelo slabo";46;24;12;16;3;4.6;39;29;16;17;0;4.9
+" ";"Ženske"
+" ";" ";"Splošno zdravstveno stanje - SKUPAJ";5;24;46;24;0;7.2;7;22;47;23;1;7.2
+" ";" ";"Zelo dobro";1;9;45;44;1;8.2;3;7;55;36;0;8.1
+" ";" ";"Dobro";2;19;53;26;0;7.5;4;18;52;25;1;7.5
+" ";" ";"Srednje";7;38;43;12;0;6.7;9;36;40;14;1;6.7
+" ";" ";"Slabo";16;43;30;10;1;5.9;23;44;24;6;2;5.6
+" ";" ";"Zelo slabo";27;36;21;14;1;5.5;27;34;33;1;4;5.0
+
+"Vir: Statistièni urad Republike Slovenije (SILC)."
+
+"Povezane vsebine: "
+"- (seznam HREF=http://www.stat.si/doc/metod_pojasnila/08-236-MP.pdf "
+"target=_blank) Metodološka pojasnila "
+"- (seznam "
+"HREF=http://www.stat.si/koledar.asp?pod=8&kon=236&DatumOd=1.1.2005&Da-"
+"tumDo=Date() target=_blank) Koledar objav "
+"- (seznam HREF=http://www.stat.si/metodologija_vpr.asp?pod=8 "
+"target=_blank) Vprašalniki statistiènega raziskovanja "
+
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=../database/Meta/Klas/NUTS.htm TARGET=_blank) opis in "
+"pojasnila), raven NUTS 2."
+
+"Oseba je ocenila svoje trenutno zdravstveno stanje."
+
+"Rezultati statistiènega raziskovanja SILC izhajajo iz ankete, "
+"izvedene v zaèetku posameznega leta, in iz registrov ter "
+"administrativnih virov, ki se nanašajo na leto pred izvedbo ankete."
+
+"Podatki se nanašajo na osebe, stare 16 ali veè let, ki so gledano v "
+"celoti ocenile, kako so zadovoljne s svojim življenjem, na lestvici "
+"od 0 (povsem nezadovoljen)  do 10 (zelo zadovoljen). "
+"Nekateri seštevki se zaradi zaokroževanja ne ujemajo."
+

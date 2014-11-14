@@ -1,0 +1,30 @@
+"Splošno zdravstveno stanje oseb po: STAROSTNI RAZREDI, LETO ,"
+"ZDRAVSTVENO STANJE"
+
+" ";"2005";" ";" ";" ";" ";"2006";" ";" ";" ";" ";"2007";" ";" ";" ";" ";"2008";" ";" ";" ";" ";"2009";" ";" ";" ";" ";"2010";" ";" ";" ";" ";"2011";" ";" ";" ";" ";"2012";" ";" ";" ";" ";"2013";" ";" ";" ";" "
+" ";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo";"Zelo dobro";"Dobro";"Srednje";"Slabo";"Zelo slabo"
+"Skupaj";15;39;30;13;3;16;40;28;13;3;16;42;28;11;3;16;42;27;12;3;17;43;27;10;3;18;42;27;10;3;19;42;26;10;3;20;43;24;10;3;23;42;25;9;2
+"Od 16 do 25 let";37;50;11;2;0;35;52;10;2;1;37;49;13;2;0;40;48;10;1;0;38;50;11;1;1;41;46;10;2;1;43;47;8;1;1;46;45;7;1;1;52;41;6;1;0
+"Od 26 do 35 let";24;54;20;2;0;27;53;16;3;1;26;55;15;3;1;26;55;14;3;1;30;54;12;2;1;30;54;13;2;2;34;50;12;4;1;32;52;12;2;1;37;48;12;2;1
+"Od 36 do 45 let";13;48;30;8;1;17;51;24;7;1;14;53;27;6;1;17;51;25;6;1;18;54;22;5;1;20;51;22;6;1;20;53;21;5;1;24;53;17;4;1;27;53;16;3;1
+"Od 46 do 55 let";6;36;38;16;4;10;37;37;14;3;9;39;35;14;4;8;41;34;14;3;11;41;34;11;3;11;43;34;10;3;11;44;31;11;3;13;45;30;9;3;13;44;32;8;3
+"Od 56 do 65";5;28;43;20;5;6;31;42;18;4;7;32;40;17;4;5;36;38;18;3;6;36;39;16;4;6;34;41;17;3;6;35;42;15;3;7;38;38;14;3;8;40;39;12;2
+"66 let in veè";2;17;41;31;9;2;19;39;31;9;3;21;38;29;9;3;21;40;28;8;3;22;42;25;8;3;23;41;26;7;3;21;42;25;8;3;24;39;26;8;4;24;41;25;6
+
+"Vir: Statistièni urad Republike Slovenije. "
+
+"Povezane vsebine: "
+"- (seznam HREF=http://www.stat.si/doc/metod_pojasnila/08-236-MP.pdf "
+"target=_blank) Metodološka pojasnila "
+"- (seznam "
+"HREF=http://www.stat.si/koledar.asp?pod=8&kon=236&DatumOd=1.1.2005&Da-"
+"tumDo=Date() target=_blank) Koledar objav "
+"- (seznam HREF=http://www.stat.si/metodologija_vpr.asp?pod=8 "
+"target=_blank) Vprašalniki statistiènega raziskovanja "
+
+"Rezultati statistiènega raziskovanja SILC izhajajo iz ankete,  "
+"izvedene v zaèetku posameznega leta, in iz registrov ter "
+"administrativnih virov, ki se nanašajo na leto pred izvedbo ankete."
+
+"Zaradi zaokroževanja se vsote vèasih ne ujemajo."
+

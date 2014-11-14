@@ -1,4 +1,4 @@
-# Analiza podatkov s programom R, 2014/15
+# Splošno zdravstveno stanje in splošno zadovoljstvo z življenjem oseb v Sloveniji
 
 Avtor: Mirjam Pergar
 

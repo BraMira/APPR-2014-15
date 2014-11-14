@@ -8,7 +8,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2014/15.
 
 Naslov mojega projekta je Splošno zdravstveno stanje in splošno zadovoljstvo z življenjem oseb v Sloveniji. 
 
-Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb glede na starost in spol in splošnim zadovoljstvom z življenjem oseb v Sloveniji glede na spol, starost, zdravstveno stanje in glede na regije. Skozi analizo bi rada ugotovila kako sta splošno zdravstveno stanje in zadovoljstvo z življenjem povezana.
+Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb glede na starost in spol in splošnim zadovoljstvom z življenjem oseb v Sloveniji glede na spol, starost, zdravstveno stanje in glede na regije.  povezana.
 
 Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
@@ -23,7 +23,9 @@ Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
 5.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
 
+Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
 
+Skozi analize teh podatkov bi rada prikazala povezavo med splošnim zdravstvenim stanjem in zadovoljstvom z življenjem oseb v Sloveniji in prikazala te podatke na zemljevidu Slovenije po regijah.
 
 ## Program
 

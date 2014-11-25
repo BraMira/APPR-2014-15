@@ -1,49 +1,14 @@
-"Samoocena splošnega zadovoljstva z življenjem po: STATISTIÈNA REGIJA,"
-"LETO , SAMOOCENA"
-
-" ";"2012";" ";" ";" ";" ";" ";"2013";" ";" ";" ";" ";" "
-" ";"0-4 (%)";"5-6 (%)";"7-8 (%)";"9-10 (%)";"Neznano (%)";"Povpreèje";"0-4 (%)";"5-6 (%)";"7-8 (%)";"9-10 (%)";"Neznano (%)";"Povpreèje"
-"SLOVENIJA";7;26;45;20;1;7.1;8;26;45;20;0;7.0
-"Pomurska";6;31;47;15;1;6.8;9;34;43;13;0;6.7
-"Podravska";10;28;44;18;1;6.8;8;29;41;22;0;6.9
-"Koroška";8;26;44;21;1;7.0;8;29;45;18;1;6.9
-"Savinjska";5;29;46;19;1;7.1;8;28;44;20;0;7.0
-"Zasavska";10;29;41;20;1;6.9;12;35;37;17;0;6.6
-"Spodnjeposavska";9;32;40;19;1;6.8;6;28;49;16;0;6.9
-"Jugovzhodna Slovenija";8;26;48;17;1;6.9;9;28;42;21;0;6.9
-"Osrednjeslovenska";7;24;47;22;1;7.2;7;22;49;22;1;7.2
-"Gorenjska";5;23;45;27;1;7.3;10;23;44;22;0;7.1
-"Notranjsko-kraška";7;22;44;27;0;7.3;9;27;42;21;0;7.0
-"Goriška";5;30;45;20;0;7.1;7;30;45;18;0;7.0
-"Obalno-kraška";9;22;48;21;1;7.1;11;25;44;20;0;6.9
-
-"Vir: Statistièni urad Republike Slovenije (SILC)."
-
-"Povezane vsebine: "
-"- (seznam HREF=http://www.stat.si/doc/metod_pojasnila/08-236-MP.pdf "
-"target=_blank) Metodološka pojasnila "
-"- (seznam "
-"HREF=http://www.stat.si/koledar.asp?pod=8&kon=236&DatumOd=1.1.2005&Da-"
-"tumDo=Date() target=_blank) Koledar objav "
-"- (seznam HREF=http://www.stat.si/metodologija_vpr.asp?pod=8 "
-"target=_blank) Vprašalniki statistiènega raziskovanja "
-
-"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
-"teritorialnih enot v Evropski uniji (The Classification  of "
-"Territorial Units for Statistics) – NUTS ((seznam "
-"HREF=../database/Meta/Klas/NUTS.htm TARGET=_blank) opis in "
-"pojasnila), raven NUTS 3.Opombe o spremembah posameznih regij so "
-"zapisane k vsaki spremenjeni regiji in so ob izpisu tabele na zaslon "
-"dostopne s klikom na ikono za opombe (zvezdica). V opombah je na "
-"zaèetku naveden datum, s katerim je opisana teritorialna sprememba "
-"upoštevana pri teritorialnem razvršèanju enot za statistiène namene."
-
-"Rezultati statistiènega raziskovanja SILC izhajajo iz ankete,  "
-"izvedene v zaèetku posameznega leta, in iz registrov ter "
-"administrativnih virov, ki se nanašajo na leto pred izvedbo ankete. "
-
-"Podatki se nanašajo na osebe, stare 16 ali veè let, ki so gledano v "
-"celoti ocenile, kako so zadovoljne s svojim življenjem, na lestvici "
-"od 0 (povsem nezadovoljen)  do 10 (zelo zadovoljen). "
-"Nekateri seštevki se zaradi zaokroževanja ne ujemajo."
-
+ ;0-4 (%);5-6 (%);7-8 (%);9-10 (%);Neznano (%);Povpreèje;0-4 (%);5-6 (%);7-8 (%);9-10 (%);Neznano (%);Povpreèje
+SLOVENIJA;7;26;45;20;1;7.1;8;26;45;20;0;7.0
+Pomurska;6;31;47;15;1;6.8;9;34;43;13;0;6.7
+Podravska;10;28;44;18;1;6.8;8;29;41;22;0;6.9
+Koroška;8;26;44;21;1;7.0;8;29;45;18;1;6.9
+Savinjska;5;29;46;19;1;7.1;8;28;44;20;0;7.0
+Zasavska;10;29;41;20;1;6.9;12;35;37;17;0;6.6
+Spodnjeposavska;9;32;40;19;1;6.8;6;28;49;16;0;6.9
+Jugovzhodna Slovenija;8;26;48;17;1;6.9;9;28;42;21;0;6.9
+Osrednjeslovenska;7;24;47;22;1;7.2;7;22;49;22;1;7.2
+Gorenjska;5;23;45;27;1;7.3;10;23;44;22;0;7.1
+Notranjsko-kraška;7;22;44;27;0;7.3;9;27;42;21;0;7.0
+Goriška;5;30;45;20;0;7.1;7;30;45;18;0;7.0
+Obalno-kraška;9;22;48;21;1;7.1;11;25;44;20;0;6.9

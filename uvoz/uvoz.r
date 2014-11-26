@@ -58,3 +58,34 @@ uvoziSTAROST2 <- function(){
 
 cat("Uvažam podatke o splošnem zdravstvenem stanju glede na STAROST ...\n")
 SplZdrStSTAROST <- uvoziSTAROST2()
+
+uvoziSPOL1 <- function(){
+  return(read.table("podatki/skupajSPOL.csv", sep=";", as.is= TRUE, skip= 2,
+                      row.names = 1,
+                      col.names = c("Stanje",paste0("S", 2005:2013)),fileEncoding = "Windows-1250"))
+}
+
+cat("Uvažam podatke o zdravstvenem stanju po SPOLU skupaj...\n")
+skupajSPOL <- uvoziSPOL1()
+
+uvoziSPOL2 <- function(){
+  return(read.table("podatki/moskiSPOL.csv", sep=";", as.is= TRUE, skip= 2,
+                    row.names = 1,
+                    col.names = c("Stanje",paste0("M", 2005:2013)),fileEncoding = "Windows-1250"))
+}
+
+cat("Uvažam podatke o zdravstvenem stanju po SPOLU moški...\n")
+moskiSPOL <- uvoziSPOL2()
+
+uvoziSPOL3 <- function(){
+  return(read.table("podatki/zenskeSPOL.csv", sep=";", as.is= TRUE, skip= 2,
+                    row.names = c("Zelo dobro","Dobro","Srednje","Slabo","Zelo slabo"),
+                    col.names = c("Stanje",paste0("Z", 2005:2013)),fileEncoding = "Windows-1250"))
+}
+
+cat("Uvažam podatke o zdravstvenem stanju po SPOLU ženski...\n")
+zenskeSPOL <- uvoziSPOL3()
+#zenskeSPOL <- zenskeSPOL
+# #Združimo vse spole
+#  SPOL1<- merge(moskiSPOL, zenskeSPOL, by=0 ,all = TRUE)
+# SPOL <- merge(SPOL1, skupajSPOL, by = 0, all = FALSE)

@@ -1,13 +1,19 @@
 # 2. faza: Uvoz podatkov
 
-uvoziREGIJE <- function(){
-  return(read.table("podatki/SplZadZivljREGIJE.csv", sep = ";", as.is = TRUE,
-                    
-                    fileEncoding = "Windows-1250"))
-  
-}
-cat("Uvažam podatke o splošnem zadovoljstvu z življenjem po REGIJAH ...\n")
-SplZadZivljREGIJE <- uvoziREGIJE()
+#Pred začetkom zaženi naslednje funkcije:
+
+procenti <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)","Neznano (%)","Povprečje")
+procenti[1:5]<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano")
+
+
+# uvoziREGIJE <- function(){
+#   return(read.table("podatki/SplZadZivljREGIJE.csv", sep = ";", as.is = TRUE,
+#                     
+#                     fileEncoding = "Windows-1250"))
+#   
+# }
+# cat("Uvažam podatke o splošnem zadovoljstvu z življenjem po REGIJAH ...\n")
+# SplZadZivljREGIJE <- uvoziREGIJE()
 
 uvoziSTANJE <- function(){
   return(read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 6,na.strings= "NA",
@@ -17,8 +23,7 @@ uvoziSTANJE <- function(){
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO STANJE ...\n")
 ZadovoljstvoSTANJE1213 <- uvoziSTANJE()
 
-procenti <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)","Neznano (%)","Povprečje")
-procenti[1:5]<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano")
+
 
 uvoziSTAROST1 <- function(){
   return(read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 6,as.is = TRUE, na.strings= "NA",

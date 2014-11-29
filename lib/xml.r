@@ -48,38 +48,34 @@ stripByPath <- function(x, path) {
                     function(y) gsub("^\\s*(.*?)\\s*$", "\\1", xmlValue(y))))
 }
 
-uvozi.obcine <- function() {
-  url.obcine <- "file:///C:/Users/Mirjam/Desktop/FAKS/Analiza%20programiranja%20z%20R/APPR-2014-15/podatki/RegijeHTML.htm"
-  doc.obcine <- htmlTreeParse(url.obcine, useInternalNodes=TRUE, encoding = "Windows-1250")
+uvozi.regije <- function() {
+  url.regije <- "file:///C:/Users/Mirjam/Desktop/FAKS/Analiza%20programiranja%20z%20R/APPR-2014-15/podatki/RegijeHTML.htm"
+  doc.regije <- htmlTreeParse(url.regije, useInternalNodes=TRUE, encoding = "Windows-1250")
   
   # Poiščemo vse tabele v dokumentu
-  tabele <- getNodeSet(doc.obcine, "//table")
+  tabele1 <- getNodeSet(doc.regije, "//table")
   
   # Iz druge tabele dobimo seznam vrstic (<tr>) neposredno pod
   # trenutnim vozliščem
-  vrstice <- getNodeSet(tabele[[1]], "./tr")
+  vrstice1 <- getNodeSet(tabele1[[1]], "./tr")
   
   # Seznam vrstic pretvorimo v seznam (znakovnih) vektorjev
   # s porezanimi vsebinami celic (<td>) neposredno pod trenutnim vozliščem
-  seznam <- lapply(vrstice[4:length(vrstice)], stripByPath, "./td")
+  seznam1 <- lapply(vrstice1[4:length(vrstice1)-1], stripByPath, "./td")
+  
+  View(seznam1)
   
   # Iz seznama vrstic naredimo matriko
-  matrika <- matrix(unlist(seznam), nrow=length(seznam), byrow=TRUE)
+  matrika1 <- matrix(unlist(seznam1), nrow=length(seznam1), byrow=TRUE)
   
   # Imena stolpcev matrike dobimo iz celic (<th>) glave (prve vrstice) prve tabele
-  colnames(matrika) <- gsub("\n", " ", stripByPath(tabele[[3]][[2]], ".//th"))
+  colnames(matrika1) <- gsub("\n", " ", stripByPath(tabele1[[1]][[2]], ".//th"))
   
   # Podatke iz matrike spravimo v razpredelnico
   return(data.frame(apply(gsub("\\*", "",
                                gsub(",", ".",
-                                    gsub("\\.", "", matrika[,2:5]))),
-                          2, as.numeric), row.names=matrika[,1]))
+                                    gsub("\\.", "", matrika1[,2:12]))),
+                          2, as.numeric), row.names=matrika1[,1]))
 }
 
 
- r <- data.frame(apply(gsub("\\*", "",
-                             gsub(",", ".",
-                                  gsub("\\.", "", matrika[,2:5]))),
-                        2, as.numeric), row.names=matrika[,1])
- View(r)
- 

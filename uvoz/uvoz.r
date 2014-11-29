@@ -30,6 +30,8 @@ uvoziSTAROST1 <- function(){
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na STAROSTI ...\n")
 ZadovoljstvoSTAROST1213 <- uvoziSTAROST1()
 
+
+  
 uvoziSTAROST2 <- function(){
   return(read.table("podatki/SplZdrStSTAROST.csv", sep = ";", as.is = TRUE,skip = 5,
                     
@@ -45,37 +47,12 @@ stanja <- c("Zelo slabo", "Slabo","Srednje","Dobro","Zelo dobro")
 stanja1 <- c("Zelo dobro","Dobro","Srednje","Slabo","Zelo slabo")
 stanja2 <- c("ZD","D","SR","S","ZS")
 
-uvoziSPOL1 <- function(){
-  return(read.table("podatki/SPOL/skupajSPOL.csv", sep=";", as.is= TRUE, skip= 2,
-                    row.names = 1,
-                      col.names = c("Stanje",paste0("S", 2005:2013)),fileEncoding = "Windows-1250"))
+
+
+uvoziSPOL <- function(){
+  return(read.table("podatki/SPOL/SplZdrStSPOL.csv", sep=";", as.is = TRUE, skip = 4,
+                    col.names = c("Stanje",paste0("S", 2005:2013), paste0("M", 2005:2013), paste0("Z",2005:2013)),
+                    fileEncoding = "Windows-1250"))
 }
-
-cat("Uvažam podatke o zdravstvenem stanju oseb glede na OBA SPOLA ...\n")
-skupajSPOL <- uvoziSPOL1()
-
-uvoziSPOL2 <- function(){
-  return(read.table("podatki/SPOL/moskiSPOL.csv", sep=";", as.is= TRUE, skip= 2,
-                    row.names = 1,
-                    col.names = c("Stanje",paste0("M", 2005:2013)),fileEncoding = "Windows-1250"))
-}
-
-cat("Uvažam podatke o zdravstvenem stanju MOŠKIH ...\n")
-moskiSPOL <- uvoziSPOL2()
-
-uvoziSPOL3 <- function(){
-  return(read.table("podatki/SPOL/zenskeSPOL.csv", sep=";", as.is= TRUE, skip= 2,
-                    row.names = 1,
-                    col.names = c("Stanje",paste0("Z", 2005:2013)),fileEncoding = "Windows-1250"))
-}
-
-cat("Uvažam podatke o zdravstvenem stanju ŽENSK...\n")
-zenskeSPOL <- uvoziSPOL3()
-
-
-#Združimo vse spole
-SPOL1<- merge(moskiSPOL, zenskeSPOL, by=0, all = TRUE)
-rownames(SPOL1)<- SPOL1$Row.names
-SPOL1 <- SPOL1[-1]
-SPOL <- merge(SPOL1, skupajSPOL, by = 0, all = TRUE)
-
+cat("Uavažam podatke o zdravstvenem stanju oseb glede na SPOL... \n")
+SplZdrStSPOL <- uvoziSPOL()

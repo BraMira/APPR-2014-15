@@ -24,11 +24,7 @@ uvozi.starost <- function(){
                     row.names=sapply(vrstice0[5:length(vrstice0)-1],stripByPath, "./th")))
   
 }
-ZdrStarost <- uvozi.starost()
-
-#colnames(matrika0)<- gsub("\n", " ", paste(c(rep("S",9),rep("L:16-25",9),rep("L:26-35",9),
-#rep("L:36-45",9),rep("L:46-55",9),rep("L:56-65",9),
-#rep("L:66+",9)),stolpci0))
+cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na STAROST...\n")
 
 #Splošno zdravstveno stanje glede na SPOL:
 
@@ -45,7 +41,8 @@ uvozi.spol <- function(){
   return(data.frame(apply(matrika, 2, as.numeric),
                     row.names = sapply(vrstice[5:length(vrstice)-1],stripByPath, "./th")))
 }
-ZdrSpol <- uvozi.spol()
+cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na SPOL...\n")
+
 #Samoocena zadovoljstva z življenjem po REGIJAH:
 
 uvozi.regije <- function() {
@@ -70,6 +67,5 @@ uvozi.regije <- function() {
   )
   
 }
-
-ZadRegije<-uvozi.regije()
+cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na REGIJE...\n")
 

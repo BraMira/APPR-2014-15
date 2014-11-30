@@ -6,29 +6,63 @@ procenti <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)","Neznano (%)","Povprečje
 procenti[1:5]<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano")
 
 stanja <- c("Zelo slabo", "Slabo","Srednje","Dobro","Zelo dobro")
-stanja1 <- c("Zelo dobro","Dobro","Srednje","Slabo","Zelo slabo")
 
-uvoziSTANJE <- function(){
+source("lib/xml.r", encoding="UTF-8")
+ZdrStarost <- uvozi.starost()
+ZdrSpol <- uvozi.spol()
+ZadRegije<-uvozi.regije()
+
+uvoziSTANJE1 <- function(){
   return(read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 6,na.strings= "NA",
-                    
+                
                     col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
                     fileEncoding = "Windows-1250"))
 }
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO STANJE ...\n")
-ZadStanje <- uvoziSTANJE()
-
+ZadStanje1 <- uvoziSTANJE1()
 
 
 uvoziSTAROST1 <- function(){
   return(read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 6,as.is = TRUE, na.strings= "NA",
+                    blank.lines.skip=TRUE,
                     
-                    col.names = c("Starosti","Spol", paste0(procenti, "_2012"), paste0(procenti, "_2013")),
+                    col.names = c("Spol","Starostne skupine",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
                     fileEncoding = "Windows-1250"))
   
 }
 
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na STAROSTI ...\n")
 ZadStarost <- uvoziSTAROST1()
+
+#Za drugo fazo:
+
+# uvoziSTANJE <- function(){
+#   # preberemo tabelo, pri čemer izpustimo prazne vrstice ter vsote in povprečja
+#   ZadStanje <- read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 6,na.strings= "NA",
+#                           col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
+#                           fileEncoding = "Windows-1250", nrows = 12)[c(-1, -7), c(-8, -14)]
+#   # pripravimo vsebino novih stolpcev
+#   frekvence <- unlist(ZadStanje[3:12])
+#   # poberemo podatke iz imen dobljenega  vektorja
+#   stolpci <- matrix(unlist(strsplit(gsub("(_[0-9]{4}).*$", "\\1",
+#                                          gsub("\\.", " ", names(frekvence))), "_")),
+#                     ncol = 2, byrow = TRUE)
+#   # naredimo faktor za zdravstvena stanja
+#   Stanja <- factor(ZadStanje$Zdravstveno.stanje, levels = stanja, ordered = TRUE)
+#   # naredimo faktor za zadovoljstvo, pri čemer vrednosti "Neznano" ne upoštevamo
+#   Zadovoljstvo <- factor(stolpci[,1], levels = procenti[1:4], ordered = TRUE)
+#   # podatke zberemo v novo tabelo brez imen vrstic
+#   return(
+#     data.frame(Spol = c(rep("Moški", 5), rep("Ženske", 5)),
+#                Zdravstveno.stanje = Stanja,
+#                Zadovoljstvo = Zadovoljstvo,
+#                Leto = as.numeric(stolpci[,2]),
+#                Frekvenca = frekvence,
+#                row.names = NULL)
+#   )
+# }
+#ZadStanje <- uvoziSTANJE()
+
 
 
 #Funkcije, ki so dodane kot html, ne csv  

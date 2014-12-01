@@ -48,7 +48,7 @@ cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na SPOL...\n")
 uvozi.regije <- function() {
   url.regije <- "podatki/RegijeHTML.htm"
   doc.regije <- htmlTreeParse(url.regije, useInternalNodes=TRUE, encoding = "Windows-1250")
-  
+ 
   tabele1 <- getNodeSet(doc.regije, "//table")
   
   vrstice1 <- getNodeSet(tabele1[[1]], "./tr")
@@ -56,6 +56,7 @@ uvozi.regije <- function() {
   seznam1 <- lapply(vrstice1[5:length(vrstice1)-1], stripByPath, "./td")
   
   stolpci1 <- stripByPath(tabele1[[1]][[3]], "./th")[-1]
+  #stolpci1 <- rep(procenti,2)
   
   matrika1 <- matrix(unlist(seznam1), nrow=length(seznam1), byrow=TRUE)
   

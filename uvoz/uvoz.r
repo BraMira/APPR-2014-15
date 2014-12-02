@@ -21,9 +21,9 @@ uvoziSTANJE1 <- function(){
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO STANJE ...\n")
 ZadStanje1 <- uvoziSTANJE1()
 
-
+starosti <- c("Starostne skupine - SKUPAJ","16-25 let","26-35 let","36-45 let","46-55 let","56-65 let","66 ali več let")
 uvoziSTAROST1 <- function(){
-  return(read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 6,as.is = TRUE, na.strings= "NA",
+  return(read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 15,as.is = TRUE, na.strings= "NA",
                     blank.lines.skip=TRUE,
                     
                     col.names = c("Spol","Starostne skupine",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
@@ -33,6 +33,9 @@ uvoziSTAROST1 <- function(){
 
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na STAROSTI ...\n")
 ZadStarost <- uvoziSTAROST1()
+ZadStarost <- ZadStarost[-1][-1][-8,]
+
+
 
 #Za drugo fazo:
 

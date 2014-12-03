@@ -48,7 +48,7 @@ barplot(Leto2013 , beside =TRUE,
 stanja2013 <- as.matrix(ZadStanje[c(1,5,6,10),c(7:10)])
 colnames(stanja2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
-        legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženska- Zelo dobro", "Ženska-Zelo slabo"),
+        legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženske- Zelo dobro", "Ženske-Zelo slabo"),
         col = c("antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
         main = "Zadovoljstvo z življenjem glede na zdravstveno stanje v letu 2013",
         sub = "Zadovoljstvo v procentih")

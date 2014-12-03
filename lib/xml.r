@@ -7,7 +7,7 @@ stripByPath <- function(x, path) {
   unlist(xpathApply(x, path,
                     function(y) gsub("^\\s*(.*?)\\s*$", "\\1", xmlValue(y))))
 }
-#TABLEA 3
+#TABELA 3
 #Splošno zdravstveno stanje glede na STAROST:
 
 uvozi.starost <- function(){

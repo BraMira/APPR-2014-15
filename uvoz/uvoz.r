@@ -6,6 +6,7 @@ procenti <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)","Neznano (%)","Povprečje
 procenti[1:5]<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano")
 
 stanja <- c("Zelo slabo", "Slabo","Srednje","Dobro","Zelo dobro")
+stanja1 <- c("Zelo dobro","Dobro","Srednje","Slabo","Zelo slabo")
 
 source("lib/xml.r", encoding="UTF-8")
 ZdrStarost <- uvozi.starost()
@@ -13,28 +14,30 @@ ZdrSpol <- uvozi.spol()
 ZadRegije<-uvozi.regije()
 
 uvoziSTANJE1 <- function(){
-  return(read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 6,na.strings= "NA",
+  t <- read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 7,na.strings= "NA",
                 
                     col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
-                    fileEncoding = "Windows-1250"))
+                    fileEncoding = "Windows-1250")[c(-6,-12:-17),c(-1,-2)]
+  row.names(t) <- c(paste("M",stanja1),paste("Z",stanja1))
+  return(t)
 }
+  
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO STANJE ...\n")
 ZadStanje1 <- uvoziSTANJE1()
 
+#TABELA 2
+
 starosti <- c("Starostne skupine - SKUPAJ","16-25 let","26-35 let","36-45 let","46-55 let","56-65 let","66 ali več let")
 uvoziSTAROST1 <- function(){
-  return(read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 15,as.is = TRUE, na.strings= "NA",
-                    blank.lines.skip=TRUE,
-                    
-                    col.names = c("Spol","Starostne skupine",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
-                    fileEncoding = "Windows-1250"))
-  
+  r <- read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 15,as.is = TRUE, na.strings= "NA",
+                  blank.lines.skip=TRUE,
+                  
+                  col.names = c("Spol","Starostne skupine",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
+                  fileEncoding = "Windows-1250")[-8,c(-1,-2)]
+  row.names(r) <- c(paste("M", starosti),paste("Z", starosti))
+  return(r)
 }
-
-cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na STAROSTI ...\n")
-ZadStarost <- uvoziSTAROST1()
-ZadStarost <- ZadStarost[-1][-1][-8,]
-
+ZadStarosti <- uvoziSTAROST1()
 
 
 #Za drugo fazo:

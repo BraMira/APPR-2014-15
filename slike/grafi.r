@@ -1,4 +1,4 @@
-pdf("slike/grafi.pdf",paper="a4r")
+pdf("slike/grafi.pdf", paper= "a4")
 
 
 #GRAF 1
@@ -12,6 +12,7 @@ barplot(zdr, beside = TRUE,
 
 VseStarosti <- c("Skupaj", "16-25","26-35","36-45","46-55","56-65","66+")
 
+
 #GRAF 2
 
 zdr2013 <- as.matrix(ZdrStarost[grep("2013$", names(ZdrStarost))])
@@ -19,8 +20,9 @@ colnames(zdr2013) <- VseStarosti
 barplot(zdr2013, beside = TRUE,
         col =c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
         legend.text = rownames(zdr2013), 
-        xlim = c(0,60), ylim=c(0,60), main = "Zdravstveno stanje oseb po starostih v letu 2013") 
+        xlim = c(0,50), ylim=c(0,60), main = "Zdravstveno stanje oseb po starostih v letu 2013") 
         
+
 
 #GRAF 3
 
@@ -30,6 +32,7 @@ barplot(skupaj, beside=TRUE,
         col =c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
         legend.text = rownames(skupaj), main = "Zdravstveno stanje obeh spolov skupaj",
         xlim = c(0,70),ylim=c(0,50))
+
 
 #GRAF 4
 
@@ -47,8 +50,9 @@ colnames(stanja2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
         legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženska- Zelo dobro", "Ženska-Zelo slabo"),
         col = c("antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
-        main = "Zadovoljstvo z življenjem glede na zdravstveno stanje",
+        main = "Zadovoljstvo z življenjem glede na zdravstveno stanje v letu 2013",
         sub = "Zadovoljstvo v procentih")
+
 
 #GRAF 6
 
@@ -57,7 +61,7 @@ colnames(starosti2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(starosti2013,beside = TRUE, xlim = c(0,35),ylim=c(0,60),
         col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3","lightgreen"),
         legend.text = c("Moški 16-25 let", "Moški 36-45 let", "Moški 55-65 let","Ženske 16-25 let", "Ženske 36-45 let", "Ženske 55-65 let"),
-        main = "Zadovoljstvo z življenjem glede na starost",
+        main = "Zadovoljstvo z življenjem glede na starost v letu 2013",
         sub = "Zadovoljstvo v procentih")
         
 

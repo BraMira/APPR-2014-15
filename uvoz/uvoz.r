@@ -13,7 +13,9 @@ ZdrStarost <- uvozi.starost()
 ZdrSpol <- uvozi.spol()
 ZadRegije<-uvozi.regije()
 
-uvoziSTANJE1 <- function(){
+"TABELA 1"
+
+uvoziSTANJE <- function(){
   t <- read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 7,na.strings= "NA",
                 
                     col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
@@ -23,12 +25,12 @@ uvoziSTANJE1 <- function(){
 }
   
 cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO STANJE ...\n")
-ZadStanje1 <- uvoziSTANJE1()
+ZadStanje <- uvoziSTANJE()
 
 #TABELA 2
 
 starosti <- c("Starostne skupine - SKUPAJ","16-25 let","26-35 let","36-45 let","46-55 let","56-65 let","66 ali več let")
-uvoziSTAROST1 <- function(){
+uvoziSTAROST <- function(){
   r <- read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 15,as.is = TRUE, na.strings= "NA",
                   blank.lines.skip=TRUE,
                   
@@ -37,7 +39,7 @@ uvoziSTAROST1 <- function(){
   row.names(r) <- c(paste("M", starosti),paste("Z", starosti))
   return(r)
 }
-ZadStarosti <- uvoziSTAROST1()
+ZadStarosti <- uvoziSTAROST()
 
 
 #Za drugo fazo:

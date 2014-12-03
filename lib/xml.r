@@ -7,7 +7,9 @@ stripByPath <- function(x, path) {
   unlist(xpathApply(x, path,
                     function(y) gsub("^\\s*(.*?)\\s*$", "\\1", xmlValue(y))))
 }
+#TABLEA 3
 #Splošno zdravstveno stanje glede na STAROST:
+
 uvozi.starost <- function(){
   url.starost <- "podatki/stStarost2.htm"
   doc.starost <- htmlTreeParse(url.starost, useInternalNodes=TRUE, encoding="Windows-1250")
@@ -26,6 +28,7 @@ uvozi.starost <- function(){
 }
 cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na STAROST...\n")
 
+#TABELA 4
 #Splošno zdravstveno stanje glede na SPOL:
 
 uvozi.spol <- function(){
@@ -43,6 +46,7 @@ uvozi.spol <- function(){
 }
 cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na SPOL...\n")
 
+#TABELA 5
 #Samoocena zadovoljstva z življenjem po REGIJAH:
 
 uvozi.regije <- function() {

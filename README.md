@@ -12,16 +12,16 @@ Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb gled
 
 Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
-1.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868510S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868510S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
 
-2.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868515S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868515S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
 
-3.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872005S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872005S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
 
 
-4.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872035S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872035S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
 
-5.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
 
 Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
 

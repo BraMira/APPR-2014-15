@@ -4,21 +4,24 @@
 
 procenti <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)","Neznano (%)","Povprečje")
 procenti[1:5]<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano")
-
+starosti <- c("Starostne skupine - SKUPAJ","16-25 let","26-35 let","36-45 let","46-55 let","56-65 let","66 ali več let")
 stanja <- c("Zelo slabo", "Slabo","Srednje","Dobro","Zelo dobro")
-stanja1 <- c("Zelo dobro","Dobro","Srednje","Slabo","Zelo slabo")
+stanja1 <- rev(stanja)
+
+"Uvoz tabel HTML"
 
 source("lib/xml.r", encoding="UTF-8")
 ZdrStarost <- uvozi.starost()
 ZdrSpol <- uvozi.spol()
 ZadRegije<-uvozi.regije()
 
-"TABELA 1"
+#TABELA 1
+#Tabela zadovoljstva z življenjem glede na zdravstveno stanje
 
 uvoziSTANJE <- function(){
   t <- read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 7,na.strings= "NA",
-                
-                    col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
+                    col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), 
+                                paste0(procenti, "_2013")),
                     fileEncoding = "Windows-1250")[c(-6,-12:-17),c(-1,-2)]
   row.names(t) <- c(paste("M",stanja1),paste("Z",stanja1))
   return(t)
@@ -28,8 +31,8 @@ cat("Uvažam podatke o splošnem zadovoljstvu z življenjem glede na ZDRAVSTVENO
 ZadStanje <- uvoziSTANJE()
 
 #TABELA 2
+#Tabela zadovoljstva z življenjem glede na starosti
 
-starosti <- c("Starostne skupine - SKUPAJ","16-25 let","26-35 let","36-45 let","46-55 let","56-65 let","66 ali več let")
 uvoziSTAROST <- function(){
   r <- read.table("podatki/ZadovoljstvoSTAROST1213.csv", sep = ";", skip= 15,as.is = TRUE, na.strings= "NA",
                   blank.lines.skip=TRUE,
@@ -40,6 +43,9 @@ uvoziSTAROST <- function(){
   return(r)
 }
 ZadStarosti <- uvoziSTAROST()
+
+
+
 
 
 #Za drugo fazo:

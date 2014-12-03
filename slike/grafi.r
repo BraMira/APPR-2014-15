@@ -17,7 +17,8 @@ colnames(zdr2013) <- VseStarosti
 barplot(zdr2013, beside = TRUE,
         col =c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
         legend.text = rownames(zdr2013), 
-        xlim = c(0,60), ylim=c(0,60), main = "Zdravstveno stanje oseb po starostih v letu 2013")
+        xlim = c(0,60), ylim=c(0,60), main = "Zdravstveno stanje oseb po starostih v letu 2013") 
+        
 
 #Graf za zdravstveno stanje po vseh spolih
 
@@ -36,6 +37,22 @@ barplot(Leto2013 , beside =TRUE,
         main = "Zdravstveno stanje oseb v letu 2013",
         col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"))
 
+stanja2013 <- as.matrix(ZadStanje1[c(1,5,6,10),c(7:10)])
+colnames(stanja2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
+barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
+        legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženska- Zelo dobro", "Ženska-Zelo slabo"),
+        col = c("antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
+        main = "Zadovoljstvo z življenjem glede na zdravstveno stanje",
+        sub = "Zadovoljstvo v procentih")
+
+starosti2013 <- as.matrix(ZadStarosti[c(2,4,6,9,11,13),c(7:10)])
+colnames(starosti2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
+barplot(starosti2013,beside = TRUE, xlim = c(0,35),ylim=c(0,60),
+        col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3","lightgreen"),
+        legend.text = c("Moški 16-25 let", "Moški 36-45 let", "Moški 55-65 let","Ženske 16-25 let", "Ženske 36-45 let", "Ženske 55-65 let"),
+        main = "Zadovoljstvo z življenjem glede na starost",
+        sub = "Zadovoljstvo v procentih")
+        
 
 dev.off()
 

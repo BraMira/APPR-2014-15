@@ -1,47 +1,67 @@
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[slovene]{babel}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{pdfpages}
 
 \pagestyle{plain}
 
 \begin{document}
+
 \title{Poročilo pri predmetu \\
-Analiza podatkov s programom R}
+Analiza podatkov s programom R\\}
+
 \author{Mirjam Pergar}
-\maketitle
+\clearpage\maketitle
+\thispagestyle{empty}
+
+
 
 \section{Izbira teme}
 
-Naslov mojega projekta je Splošno zdravstveno stanje in splošno zadovoljstvo z življenjem oseb v Sloveniji. 
+Naslov mojega projekta je \large\textbf{Splošno zdravstveno stanje in splošno zadovoljstvo z življenjem oseb v Sloveniji.}
 
 Projekt se bo ukvarjal z analiziranjem splošnega zdravstvenega stanja oseb glede na starost in spol in splošnim zadovoljstvom z življenjem oseb v Sloveniji glede na spol, starost, zdravstveno stanje in glede na regije. Pri prvi polovici analiziranja bom predvsem zbrala podatke kako je zdravstveno stanje povezano s starostjo in spolom. Nato bom v drugi polovici preverila kako osebe samoocenijo svoje zadovoljstvo z življenjem. Ali je to povezano s starostjo, spolom, zdravstvenim stanjem in od kod posamezna oseba prihaja? Ali pa med temi faktorji ni nobenih povezav?
 
 Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
-1.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868510S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
+\begin{itemize} 
+\item \textit{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868510S\&ti=\&path=../Database/
+Dem\_soc/08\_zivljenjska\_raven/17\_silc\_zdravje/05\_08685\_splosno\_zdravst\_stanje/\&lang=2}
 
-2.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868515S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/17_silc_zdravje/05_08685_splosno_zdravst_stanje/&lang=2
+\item  \textit{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0868515S\&ti=\&path=../Database/
+Dem\_soc/08\_zivljenjska\_raven/17\_silc\_zdravje/05\_08685\_splosno\_zdravst\_stanje/\&lang=2}
 
-3.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872005S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
+\item \textit{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872005S\&ti=\&path=../Database/
+Dem\_soc/08\_zivljenjska\_raven/18\_08720\_silc\_zadovol\_zivljenje/\&lang=2}
 
+\item \textit{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872035S\&ti=\&path=../Database/
+Dem\_soc/08\_zivljenjska\_raven/18\_08720\_silc\_zadovol\_zivljenje/\&lang=2}
 
-4.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872035S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
-
-5.) http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
-
-Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
+\item  \textit{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S\&ti=\&path=../Database/
+Dem\_soc/08\_zivljenjska\_raven/18\_08720\_silc\_zadovol\_zivljenje/\&lang=2}
+\end{itemize}
+Vsi podatki so na voljo v naslednjih oblikah: \textit{.txt, .csv, .htm, .xls}.
 
 Skozi analize teh podatkov bi rada prikazala povezavo med splošnim zdravstvenim stanjem in zadovoljstvom z življenjem oseb v Sloveniji in prikazala te podatke na zemljevidu Slovenije po regijah.
+\newpage
 \section{Obdelava, uvoz in čiščenje podatkov}
+V drugi fazi projekta sem uvozila v R 5 tabel 6 grafov. Dve od teh tabel sta bile oblike \textit{.csv} in tri \textit{.htm}, grafi pa so zaradi mojih podatkov vsi stolpični. Tako lahko sedaj v tabelah pogledamo podatke o Splošnem zdravstvenem stanju oseb po spolu in starosti, torej kakšno je zdravje moških in žensk različnih starosti, in Splošnim zadovoljstvom oseb glede na starost,zdravstveno stanje in regije, od koder lahko razbiramo podatke o tem kako so ljudje različnih starosti, različnih zdravstvenih stanje in živeči v različnih regijah države, samoocenili svoje zadovoljstvo z življenjem. V prvem grafu sem predstavila zdravstveno stanje oseb po vseh starostih v letih 2005-2013, v naslednjem grafu pa sem izolirala samo leto 2013, kjer so prikazane vse starostne skupine.Tretji graf prikazuje zdravstveno stanje oseb obeh spolov skupaj v letih 2005-2013, v sledečem grafu sem spet izolirala leto 2013 in pogledala stanja za moške in ženske posebej. V petem grafu je predstavljeno zadovoljstvo z življenjem oseb glede na zdravstveno stanje v letu 2013, ker sem pogledala zadovoljstvo za moške in ženske posebej, izbrala sem pa tudi mejna zdravstvena stanja; torej zelo dobro in zelo slabo. Zadnji graf pa prikazuje zadovoljstvo z življenjem glede na starost v letu 2013, kjer sem spet pogledala zadovoljstvo posebej za moške in ženske, izbrala pa sem si 3 različne starostne skupine: osebe od 16 do 25 let, 36 do 45 let in 55 do 65 let.
+
+Uvoz sem začela s tabelami \textit{.csv}, ki so bile najlažje za uvoziti, zato sem za njihov uvoz izbrala najbolj zapletene podatke, katere sem pozneje počistila tako, da so namesto dveh glavnih stolpcev kreirala enega, ki vsebuje podatke obeh. Zato so prišle na vrsto HTML tabele, s katerimi sem se morala veliko bolj potruditi, saj na začetku nisem obvladala vseh ukazov. Po čiščenju nepotrebnih podatkov in preimenovanjih stolpcev in vrstic, sem se lotila grafov. Kar je bilo dokj enostavno, ko sem vedela, kaj vsaka funckija počne in kako jo uporabiš.
+
+ Pri uvozi sem se srečevala z različnimi težavami, katere sem sproti odpravljala, npr.: kako poteka uvoz iz html-ja,kako oblikovati podatke čim bolj učinkovito in pregledno, kako spremeniš imena vrstic, kako poiskati določene podatke v grafu in jih vključiti v graf ter s kodiranjem.
+
+Spodaj so moji grafi:
+\includepdf[pages={1-6}]{../slike/grafi.pdf}
 
 \section{Analiza in vizualizacija podatkov}
 
-\includegraphics{../slike/povprecna_druzina.pdf}
+%\includegraphics{../slike/povprecna_druzina.pdf}
 
 \section{Napredna analiza podatkov}
 
-\includegraphics{../slike/naselja.pdf}
+%\includegraphics{../slike/naselja.pdf}
 
 \end{document}

@@ -46,8 +46,10 @@ barplot(Leto2013 , beside =TRUE,
         col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"))
 
 #GRAF 5
-
-stanja2013 <- as.matrix(ZadStanje[c(1,5,6,10),c(7:10)])
+stanje1 <- grep("M Z",rownames(ZadStanje))
+stanje2 <- grep("Z Z",rownames(ZadStanje))
+let2013 <- grep("en_2013",names(ZadStanje))
+stanja2013 <- as.matrix(ZadStanje[c(stanje1,stanje2),let2013])
 colnames(stanja2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
         legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženske- Zelo dobro", "Ženske-Zelo slabo"),
@@ -57,8 +59,14 @@ barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
 
 
 #GRAF 6
-
-starosti2013 <- as.matrix(ZadStarosti[c(2,4,6,9,11,13),c(7:10)])
+leta1 <- grep("M 16",rownames(ZadStarosti))
+leta2 <- grep("M 36",rownames(ZadStarosti))
+leta3 <- grep("M 56",rownames(ZadStarosti))
+leta4 <- grep("Z 16",rownames(ZadStarosti))
+leta5 <- grep("Z 36",rownames(ZadStarosti))
+leta6 <- grep("Z 56",rownames(ZadStarosti))
+leto2013 <- grep("en_2013$",names(ZadStarosti))
+starosti2013 <- as.matrix(ZadStarosti[c(leta1,leta2,leta3,leta4,leta5,leta6),leto2013])
 colnames(starosti2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(starosti2013,beside = TRUE, xlim = c(0,35),ylim=c(0,60),
         col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3","lightgreen"),

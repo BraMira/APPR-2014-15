@@ -43,4 +43,4 @@ regije <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2/shp/SVN_adm.zip"
 # barve = topo.colors(n)[1+(n-1)*(druzine$povprecje-min.povprecje)/(max.povprecje-min.povprecje)]
 # plot(obcine, col = barve)
 
-dev.off()
+#dev.off()

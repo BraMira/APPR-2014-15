@@ -48,7 +48,7 @@ cat("Uvažam podatke o splošnem zdravstvenem stanju oseb glede na SPOL...\n")
 
 #TABELA 5
 #Samoocena zadovoljstva z življenjem po REGIJAH:
-
+procenti1<-  c("Povsem nezadovoljen","Nezadovoljen", "Zadovoljen","Zelo zadovoljen", "Neznano","Povprecje")
 uvozi.regije <- function() {
   url.regije <- "podatki/RegijeHTML.htm"
   doc.regije <- htmlTreeParse(url.regije, useInternalNodes=TRUE, encoding = "Windows-1250")
@@ -64,7 +64,7 @@ uvozi.regije <- function() {
   
   matrika1 <- matrix(unlist(seznam1), nrow=length(seznam1), byrow=TRUE)
   
-  colnames(matrika1) <- gsub("\n", " ", paste(stolpci1, c(rep(2012, 6), rep(2013, 6))))
+  colnames(matrika1) <- gsub("\n", " ", paste(procenti1, c(rep(2012, 6), rep(2013, 6))))
   
   return(
     data.frame(apply(matrika1, 2, as.numeric),

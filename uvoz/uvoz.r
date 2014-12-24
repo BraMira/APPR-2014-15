@@ -44,10 +44,26 @@ uvoziSTAROST <- function(){
 }
 ZadStarosti <- uvoziSTAROST()
 
+#TABELA X
+#Tabela pričakovanih življenjskih dob glede na samooceno zdravja v Evropu
 
+uvoziEVROPA <- function(){
+  e <- read.csv2("podatki/LE12.csv",sep=",", as.is = TRUE, 
+                  na.strings = ":",
+              
+                  fileEncoding = "Windows-1250")[c(-1,-4)]
+  return(e)
+}
+ZivEvr <- uvoziEVROPA()
 
-
-
+ZivZad <-data.frame(matrix(data = NA, nrow = 31, ncol=3))
+rownames(ZivZad) <- ZivEvr$GEO[1:31]
+colnames(ZivZad) <- c("Moski","Zenske","Povprecje")
+attach(ZivEvr)
+ZivZad$Moski <- as.numeric(Value[SEX=="Males"])
+ZivZad$Zenske <- as.numeric(Value[SEX=="Females"])
+detach(ZivEvr)
+ZivZad$Povprecje <- apply(ZivZad[1:2],1 ,function(x) round(mean(x),1))
 #Za drugo fazo:
 
 # uvoziSTANJE <- function(){

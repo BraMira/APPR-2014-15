@@ -89,4 +89,58 @@ print(spplot(regije,"Zelo.zadovoljen",col.regions=topo.colors(50),
 
 dev.off()
 
+#Zemljevid Evrope
+cat("Rišem zemljevid Evrope...\n")
+evr <- uvozi.zemljevid("http://geocommons.com/overlays/174267.zip",
+                          "Evropa", "europe.shp", mapa = "zemljevid",
+                          encoding = "Windows-1250")
+
+nocemo <- c("Russia","Svalbard","Man, Isle of","Faroe Islands","Liechtenstein","Guernsey","Jan Mayen","Jersey","Andorra","Gibraltar","San Marino")
+evropa <- evr[!evr$CntryName %in% nocemo,]
+
+preuredi1 <- function(podatki, zemljevid) {
+  nove.drzave <- c("Albania","Bosnia and Herzegovina","Byelarus","Macedonia","Moldova","Monaco","Serbia","Ukraine")
+  manjkajo1 <- ! nove.drzave %in% rownames(podatki)
+  M1 <- as.data.frame(matrix(nrow=sum(manjkajo1), ncol=length(podatki)))
+  names(M1) <- names(podatki)
+  row.names(M1) <- nove.drzave[manjkajo1]
+  podatki <- rbind(podatki, M1)
+  
+  out1 <- data.frame(podatki[order(rownames(podatki)), ])[rank(levels(zemljevid$CntryName)[rank(zemljevid$CntryName)]), ]
+  if (ncol(podatki) == 1) {
+    out1 <- data.frame(out1)
+    names(out1) <- names(podatki)
+    rownames(out1) <- rownames(podatki)
+  }
+  return(out1)
+}
+Evropa <- preuredi1(ZivZad,evropa)
+
+koord <- coordinates(evropa)
+imena1 <- as.character(evropa$CntryName)
+rownames(koord)<-imena1
+names(imena1)<-imena1
+
+#Uredim koordinate
+koord["Norway",1] <- koord["Norway",1] - 4.8
+koord["Norway",2] <- koord["Norway",2] - 3
+
+#koord["Cyprus",2] <- koord["Cyprus",2] - 1
+koord["United Kingdom",1] <- koord["United Kingdom",1]+1
+koord["United Kingdom",2] <- koord["United Kingdom",2]-1
+koord["Ireland",1] <- koord["Ireland",1]+0.8
+koord["Sweden",1] <- koord["Sweden",1]-1
+koord["Greece",1] <- koord["Greece",1]-0.8
+imena1["United Kingdom"] <- "United\nKingdom"
+pdf("slike/zemljevidE.pdf")
+evropa$Povprečje.2004 <- Evropa$Povprecje_2004
+print(spplot(evropa,"Povprečje.2004",col.regions=topo.colors(50),
+             main = "Povprečna pričakovana starost v letu 2004",
+             sp.layout = list(list("sp.text",koord,imena1,cex=0.4))))
+
+evropa$Povprečje.2012 <- Evropa$Povprecje_2012
+print(spplot(evropa,"Povprečje.2012",col.regions=topo.colors(50),
+             main = "Povprečna pričakovana starost v letu 2012",
+             sp.layout = list(list("sp.text",koord,imena1,cex=0.4))))
+dev.off()
 

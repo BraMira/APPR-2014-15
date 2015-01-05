@@ -23,6 +23,10 @@ Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
 * http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S&ti=&path=../Database/Dem_soc/08_zivljenjska_raven/18_08720_silc_zadovol_zivljenje/&lang=2
 
+V drugi fazi sem dodala še eno tabelo, ki prikazuje podatke za Evropo in sicer pričakovano življenjsko dobo glede na samoocenitev zdravja. 
+
+*http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_silc_17&lang=en
+
 Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
 
 Skozi analize teh podatkov bi rada prikazala povezavo med splošnim zdravstvenim stanjem in zadovoljstvom z življenjem oseb v Sloveniji in prikazala te podatke na zemljevidu Slovenije po regijah.

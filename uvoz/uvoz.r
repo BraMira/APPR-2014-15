@@ -45,25 +45,31 @@ uvoziSTAROST <- function(){
 ZadStarosti <- uvoziSTAROST()
 
 #TABELA X
-#Tabela pričakovanih življenjskih dob glede na samooceno zdravja v Evropu
+#Tabela pričakovanih življenjskih dob glede na samooceno zdravja v Evropi
 
 uvoziEVROPA <- function(){
-  e <- read.csv2("podatki/LE12.csv",sep=",", as.is = TRUE, 
+  e <- read.csv2("podatki/LE1.csv",sep=",", as.is = TRUE, 
                   na.strings = ":",
               
-                  fileEncoding = "Windows-1250")[c(-1,-4)]
+                  fileEncoding = "Windows-1250")[-3]
   return(e)
 }
 ZivEvr <- uvoziEVROPA()
 
-ZivZad <-data.frame(matrix(data = NA, nrow = 31, ncol=3))
-rownames(ZivZad) <- ZivEvr$GEO[1:31]
-colnames(ZivZad) <- c("Moski","Zenske","Povprecje")
+ZivZad <-data.frame(matrix(data = NA, nrow = 31, ncol=6))
+rownames(ZivZad) <- unique(ZivEvr$GEO[1:62])
+colnames(ZivZad) <- c("Moski_2004","Zenske_2004","Povprecje_2004","Moski_2012","Zenske_2012","Povprecje_2012")
 attach(ZivEvr)
-ZivZad$Moski <- as.numeric(Value[SEX=="Males"])
-ZivZad$Zenske <- as.numeric(Value[SEX=="Females"])
+ZivZad$Moski_2004 <- as.numeric(Value[SEX=="Males" & TIME == "2004"])
+ZivZad$Zenske_2004 <- as.numeric(Value[SEX=="Females" & TIME =="2004"])
+ZivZad$Moski_2012 <- as.numeric(Value[SEX=="Males" & TIME == "2012"])
+ZivZad$Zenske_2012 <- as.numeric(Value[SEX=="Females" & TIME =="2012"])
 detach(ZivEvr)
-ZivZad$Povprecje <- apply(ZivZad[1:2],1 ,function(x) round(mean(x),1))
+ZivZad$Povprecje_2004 <- apply(ZivZad[1:2],1 ,function(x) round(mean(x),1))
+ZivZad$Povprecje_2012 <- apply(ZivZad[4:5],1 ,function(x) round(mean(x),1))
+
+
+
 #Za drugo fazo:
 
 # uvoziSTANJE <- function(){

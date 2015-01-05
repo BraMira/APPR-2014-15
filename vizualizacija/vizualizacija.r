@@ -95,7 +95,7 @@ evr <- uvozi.zemljevid("http://geocommons.com/overlays/174267.zip",
                           "Evropa", "europe.shp", mapa = "zemljevid",
                           encoding = "Windows-1250")
 
-nocemo <- c("Russia","Svalbard","Man, Isle of","Faroe Islands","Liechtenstein","Guernsey","Jan Mayen","Jersey","Andorra","Gibraltar","San Marino")
+nocemo <- c("Monaco","Russia","Svalbard","Man, Isle of","Faroe Islands","Liechtenstein","Guernsey","Jan Mayen","Jersey","Andorra","Gibraltar","San Marino")
 evropa <- evr[!evr$CntryName %in% nocemo,]
 
 preuredi1 <- function(podatki, zemljevid) {
@@ -124,69 +124,60 @@ names(imena1)<-imena1
 #Uredim koordinate
 koord["Norway",1] <- koord["Norway",1] - 4.8
 koord["Norway",2] <- koord["Norway",2] - 3
-
-#koord["Cyprus",2] <- koord["Cyprus",2] - 1
 koord["United Kingdom",1] <- koord["United Kingdom",1]+1
-koord["United Kingdom",2] <- koord["United Kingdom",2]-1
-koord["Ireland",1] <- koord["Ireland",1]+0.8
-koord["Sweden",1] <- koord["Sweden",1]-1
-koord["Greece",1] <- koord["Greece",1]-0.8
+koord["United Kingdom",2] <- koord["United Kingdom",2]-1.3
+koord["Ireland",1] <- koord["Ireland",1]+0.6
+koord["Sweden",1] <- koord["Sweden",1]-1.4
+koord["Greece",1] <- koord["Greece",1]-1
+koord["Greece",2] <- koord["Greece",2]+0.18
+koord["Finland",1] <- koord["Finland",1]+0.9
+koord["Latvia",1] <- koord["Latvia",1]+0.4
+koord["Lithuania",1] <- koord["Lithuania",1]+0.4
+koord["Italy",1] <- koord["Italy",1]-0.4
+koord["Austria",1] <- koord["Austria",1]+0.4
+koord["Croatia",2] <- koord["Croatia",2]+0.4
+koord["Croatia",1] <- koord["Croatia",1]+0.3
+koord["Slovakia",2] <- koord["Slovakia",2]+0.2
+koord["Slovakia",1] <- koord["Slovakia",1]+0.2
+koord["Slovenia",2] <- koord["Slovenia",2]-0.1
+koord["Slovenia",1] <- koord["Slovenia",1]-0.2
+
 imena1["United Kingdom"] <- "United\nKingdom"
+imena1["Slovenia"] <- "SLO"
+imena1["Croatia"]<- "CRO"
+imena1["Switzerland"]<- "CH"
+imena1["Macedonia"]<-"MK"
+imena1["Moldova"]<- "ML"
+imena1["Belgium"]<- "BEL"
 pdf("slike/zemljevidE.pdf")
+
+rot <- ifelse(imena1 == "Portugal", 90, 0)
 evropa$Povprečje.2004 <- Evropa$Povprecje_2004
-print(spplot(evropa,"Povprečje.2004",col.regions=topo.colors(50),
+
+
+lux <- koord[rep("Luxembourg",2),]
+lux[1,]<-lux[1,] - c(1,1.5)
+koord["Luxembourg",] <- lux[1,]
+net <- koord[rep("Netherlands",2),]
+net[1,]<-net[1,] - c(0,-2)
+koord["Netherlands",] <- net[1,]
+den <- koord[rep("Denmark",2),]
+den[1,]<-den[1,] - c(3,-1.2)
+koord["Denmark",] <- den[1,]
+
+p2004 <- !is.na(Evropa$Povprecje_2004)
+print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2004",
-             sp.layout = list(list("sp.text",koord,imena1,cex=0.4))))
+             sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.4,srt=rot[p2004]))))
 
 evropa$Povprečje.2012 <- Evropa$Povprecje_2012
-print(spplot(evropa,"Povprečje.2012",col.regions=topo.colors(50),
+p2012 <- !is.na(Evropa$Povprecje_2012)
+print(spplot(evropa,"Povprečje.2012",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2012",
-             sp.layout = list(list("sp.text",koord,imena1,cex=0.4))))
+             sp.layout = list(list("sp.text",koord[p2012,],imena1[p2012],cex=0.4, srt=rot[p2012]),
+                              list("sp.lines",Line(lux),col="black"),
+                              list("sp.lines",Line(net),col="black"),
+                              list("sp.lines",Line(den),col="black"))))
 dev.off()
 
-# cat("Uvažam zemljevid sveta...\n")
-# svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
-#                         "europa", "ne_110m_admin_0_countries.shp", mapa = "zemljevid",
-#                         encoding = "Windows-1250")
-# 
-# #Dodamo mankajoče države
-# manjkajoce.drzave <- c("Albania", "Belarus", "Kosovo", "Moldova", "Russian Federation", "Ukraine")
-# drzave <- c(rownames(ZivZad), manjkajoce.drzave)
-# drzave <- drzave[drzave %in% svet$name_long]
-# EU <- svet[svet$name_long %in% drzave,]
-# # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
-# manjkajo <- ! manjkajoce.drzave %in% rownames(ZivZad)
-# M <- as.data.frame(matrix(nrow=sum(manjkajo), ncol=length(ZivZad)))
-# names(M) <- names(ZivZad)
-# row.names(M) <- manjkajoce.drzave[manjkajo]
-# eeuro <- rbind(ZivZad, M)[as.character(EU$name_long),]
-# izbor12 <- !is.na(eeuro[,6])
-# koordinate3 <- coordinates(EU[izbor12,])
-# imena3 <- as.character(EU$name[izbor12])
-# rownames(koordinate3) <- imena3
-# names(imena3) <- imena3
-# izbor4 <- !is.na(eeuro[,3])
-# koordinate1 <- coordinates(EU[izbor4,])
-# imena1 <- as.character(EU$name[izbor4])
-# rownames(koordinate1) <- imena1
-# names(imena1) <- imena1
-# 
-# EU$Popvrečje2004 <- eeuro[,3]
-# EU$Povprečje2012 <- eeuro[,6]
-# pdf("slike/evropa.pdf")
-# print(spplot(EU, "Povprečje2004", xlim=c(-25, 40), ylim=c(33, 73),
-#              main = "Popvrečje za 2004",
-#              col.regions = topo.colors(100),
-#              sp.layout = list(
-#                list("sp.polygons", EU[is.na(eeuro[,3]),], fill = "white"),
-#                list("sp.text", koordinate1, imena1, cex = 0.3)),
-#              par.settings = list(panel.background=list(col="lightyellow"))))
-# # 
-# # print(spplot(EU, "Povprečje2012", xlim=c(-25, 40), ylim=c(33, 73),
-# #              main = "Povprečje za 2012",
-# #              col.regions = topo.colors(100),
-# #              sp.layout = list(
-# #                list("sp.polygons", EU[is.na(eeuro[,6]),], fill = "white"),
-# #                list("sp.text", koordinate, imena, cex = 0.3)),
-# #              par.settings = list(panel.background=list(col="lightyellow"))))
-# dev.off()
+cat("Zemljevidi so narisani! \n")

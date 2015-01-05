@@ -59,15 +59,15 @@ cat("Rišem zemeljvid regij...\n")
 
 #Zemljevid 1
 
-pdf("slike/zemljevid.pdf")
+pdf("slike/zemljevid1.pdf")
 regije$povprecje <- Regije$Povprecje.2013
 plot(regije,col = topo.colors(12))
 text(koordinate1,labels=Regije$Povprecje.2013,cex = 0.45)
 text(koordinate,labels=imena,cex = 0.4)
 title("Povprečno zadovoljstvo z življenjem v letu 2013")
-
+dev.off()
 #Zemljevid 2
-
+pdf("slike/zemljevid2.pdf")
 regije$Povsem.nezadovoljen <- Regije$Povsem.nezadovoljen.2013
 regije$Nezadovoljen <- Regije$Nezadovoljen.2013
 regije$Zadovoljen <- Regije$Zadovoljen.2013
@@ -81,7 +81,7 @@ print(spplot(regije,"Nezadovoljen",col.regions=topo.colors(50),
              main = "Ljudje nezadovoljni z življenjem v 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
 print(spplot(regije,"Zadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje nezadovoljni z življenjem v 2013",
+             main = "Ljudje zadovoljni z življenjem v 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
 print(spplot(regije,"Zelo.zadovoljen",col.regions=topo.colors(50),
              main = "Ljudje zelo zadovoljni z življenjem v 2013",
@@ -144,3 +144,49 @@ print(spplot(evropa,"Povprečje.2012",col.regions=topo.colors(50),
              sp.layout = list(list("sp.text",koord,imena1,cex=0.4))))
 dev.off()
 
+# cat("Uvažam zemljevid sveta...\n")
+# svet <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
+#                         "europa", "ne_110m_admin_0_countries.shp", mapa = "zemljevid",
+#                         encoding = "Windows-1250")
+# 
+# #Dodamo mankajoče države
+# manjkajoce.drzave <- c("Albania", "Belarus", "Kosovo", "Moldova", "Russian Federation", "Ukraine")
+# drzave <- c(rownames(ZivZad), manjkajoce.drzave)
+# drzave <- drzave[drzave %in% svet$name_long]
+# EU <- svet[svet$name_long %in% drzave,]
+# # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
+# manjkajo <- ! manjkajoce.drzave %in% rownames(ZivZad)
+# M <- as.data.frame(matrix(nrow=sum(manjkajo), ncol=length(ZivZad)))
+# names(M) <- names(ZivZad)
+# row.names(M) <- manjkajoce.drzave[manjkajo]
+# eeuro <- rbind(ZivZad, M)[as.character(EU$name_long),]
+# izbor12 <- !is.na(eeuro[,6])
+# koordinate3 <- coordinates(EU[izbor12,])
+# imena3 <- as.character(EU$name[izbor12])
+# rownames(koordinate3) <- imena3
+# names(imena3) <- imena3
+# izbor4 <- !is.na(eeuro[,3])
+# koordinate1 <- coordinates(EU[izbor4,])
+# imena1 <- as.character(EU$name[izbor4])
+# rownames(koordinate1) <- imena1
+# names(imena1) <- imena1
+# 
+# EU$Popvrečje2004 <- eeuro[,3]
+# EU$Povprečje2012 <- eeuro[,6]
+# pdf("slike/evropa.pdf")
+# print(spplot(EU, "Povprečje2004", xlim=c(-25, 40), ylim=c(33, 73),
+#              main = "Popvrečje za 2004",
+#              col.regions = topo.colors(100),
+#              sp.layout = list(
+#                list("sp.polygons", EU[is.na(eeuro[,3]),], fill = "white"),
+#                list("sp.text", koordinate1, imena1, cex = 0.3)),
+#              par.settings = list(panel.background=list(col="lightyellow"))))
+# # 
+# # print(spplot(EU, "Povprečje2012", xlim=c(-25, 40), ylim=c(33, 73),
+# #              main = "Povprečje za 2012",
+# #              col.regions = topo.colors(100),
+# #              sp.layout = list(
+# #                list("sp.polygons", EU[is.na(eeuro[,6]),], fill = "white"),
+# #                list("sp.text", koordinate, imena, cex = 0.3)),
+# #              par.settings = list(panel.background=list(col="lightyellow"))))
+# dev.off()

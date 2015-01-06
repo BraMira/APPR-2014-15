@@ -25,7 +25,7 @@ Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 
 V drugi fazi sem dodala še eno tabelo, ki prikazuje podatke za Evropo in sicer pričakovano življenjsko dobo glede na samoocenitev zdravja. 
 
-*http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_silc_17&lang=en
+* http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_silc_17&lang=en
 
 Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
 

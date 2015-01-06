@@ -148,6 +148,7 @@ koord["Slovakia",2] <- koord["Slovakia",2]+0.2
 koord["Slovakia",1] <- koord["Slovakia",1]+0.2
 koord["Slovenia",2] <- koord["Slovenia",2]-0.1
 koord["Slovenia",1] <- koord["Slovenia",1]-0.2
+koord["Malta",2] <- koord["Malta",2]-0.5
 
 imena1["United Kingdom"] <- "United\nKingdom"
 imena1["Slovenia"] <- "SLO"
@@ -173,17 +174,21 @@ p2004 <- !is.na(Evropa$Povprecje_2004)
 print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2004",
              sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.4,srt=rot[p2004]),
+                              list("sp.polygons",evropa[is.na(Evropa[,3]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),
-                              list("sp.lines",Line(den),col="black"))))
+                              list("sp.lines",Line(den),col="black")),
+             par.settings=list(panel.background=list(col="lightblue"))))
 
 evropa$Povprečje.2012 <- Evropa$Povprecje_2012
 p2012 <- !is.na(Evropa$Povprecje_2012)
 print(spplot(evropa,"Povprečje.2012",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2012",
              sp.layout = list(list("sp.text",koord[p2012,],imena1[p2012],cex=0.4, srt=rot[p2012]),
+                              list("sp.polygons",evropa[is.na(Evropa[,6]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),
                               list("sp.lines",Line(net),col="black"),
-                              list("sp.lines",Line(den),col="black"))))
+                              list("sp.lines",Line(den),col="black")),
+             par.settings=list(panel.background=list(col="lightblue"))))
 dev.off()
 
 cat("Zemljevidi so narisani! \n")

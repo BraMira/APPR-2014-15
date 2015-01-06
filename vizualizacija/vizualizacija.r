@@ -61,11 +61,18 @@ cat("Rišem zemeljvid regij...\n")
 
 pdf("slike/zemljevid1.pdf")
 regije$povprecje <- Regije$Povprecje.2013
-plot(regije,col = topo.colors(12))
+min.povprecje <- min(Regije[12],na.rm=TRUE)
+max.povprecje <- max(Regije[12],na.rm=TRUE)
+norm <- (Regije[12]-min.povprecje)/(max.povprecje-min.povprecje)
+n=100
+barve=rgb(1,1,(n:1)/n)[unlist(1+(n-1)*norm)]
+plot(regije,col = barve)
 text(koordinate1,labels=Regije$Povprecje.2013,cex = 0.45)
 text(koordinate,labels=imena,cex = 0.4)
 title("Povprečno zadovoljstvo z življenjem v letu 2013")
 dev.off()
+
+
 #Zemljevid 2
 pdf("slike/zemljevid2.pdf")
 regije$Povsem.nezadovoljen <- Regije$Povsem.nezadovoljen.2013
@@ -95,11 +102,11 @@ evr <- uvozi.zemljevid("http://geocommons.com/overlays/174267.zip",
                           "Evropa", "europe.shp", mapa = "zemljevid",
                           encoding = "Windows-1250")
 
-nocemo <- c("Monaco","Russia","Svalbard","Man, Isle of","Faroe Islands","Liechtenstein","Guernsey","Jan Mayen","Jersey","Andorra","Gibraltar","San Marino")
+nocemo <- c("Russia","Svalbard","Man, Isle of","Faroe Islands","Liechtenstein","Guernsey","Jan Mayen","Jersey","Andorra","Gibraltar","San Marino")
 evropa <- evr[!evr$CntryName %in% nocemo,]
 
 preuredi1 <- function(podatki, zemljevid) {
-  nove.drzave <- c("Albania","Bosnia and Herzegovina","Byelarus","Macedonia","Moldova","Monaco","Serbia","Ukraine")
+  nove.drzave <- c("Albania","Bosnia and Herzegovina","Byelarus","Macedonia","Moldova","Monaco","Serbia","Ukraine","Montenegro")
   manjkajo1 <- ! nove.drzave %in% rownames(podatki)
   M1 <- as.data.frame(matrix(nrow=sum(manjkajo1), ncol=length(podatki)))
   names(M1) <- names(podatki)
@@ -114,7 +121,7 @@ preuredi1 <- function(podatki, zemljevid) {
   }
   return(out1)
 }
-Evropa <- preuredi1(ZivZad,evropa)
+Evropa <- preuredi1(ZivZad[rownames(ZivZad) != "Cyprus",],evropa)
 
 koord <- coordinates(evropa)
 imena1 <- as.character(evropa$CntryName)
@@ -146,14 +153,7 @@ imena1["United Kingdom"] <- "United\nKingdom"
 imena1["Slovenia"] <- "SLO"
 imena1["Croatia"]<- "CRO"
 imena1["Switzerland"]<- "CH"
-imena1["Macedonia"]<-"MK"
-imena1["Moldova"]<- "ML"
 imena1["Belgium"]<- "BEL"
-pdf("slike/zemljevidE.pdf")
-
-rot <- ifelse(imena1 == "Portugal", 90, 0)
-evropa$Povprečje.2004 <- Evropa$Povprecje_2004
-
 
 lux <- koord[rep("Luxembourg",2),]
 lux[1,]<-lux[1,] - c(1,1.5)
@@ -165,10 +165,16 @@ den <- koord[rep("Denmark",2),]
 den[1,]<-den[1,] - c(3,-1.2)
 koord["Denmark",] <- den[1,]
 
+pdf("slike/zemljevidE.pdf")
+
+rot <- ifelse(imena1 == "Portugal", 90, 0)
+evropa$Povprečje.2004 <- Evropa$Povprecje_2004
 p2004 <- !is.na(Evropa$Povprecje_2004)
 print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2004",
-             sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.4,srt=rot[p2004]))))
+             sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.4,srt=rot[p2004]),
+                              list("sp.lines",Line(lux),col="black"),
+                              list("sp.lines",Line(den),col="black"))))
 
 evropa$Povprečje.2012 <- Evropa$Povprecje_2012
 p2012 <- !is.na(Evropa$Povprecje_2012)

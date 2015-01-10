@@ -81,17 +81,16 @@ regije$Zadovoljen <- Regije$Zadovoljen.2013
 regije$Zelo.zadovoljen <- Regije$Zelo.zadovoljen.2013
 
 print(spplot(regije,"Povsem.nezadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje povsem nezadovoljni z življenjem v 2013",
-             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
-             
+             main = "Ljudje povsem nezadovoljni z življenjem v letu 2013",
+             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))            
 print(spplot(regije,"Nezadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje nezadovoljni z življenjem v 2013",
+             main = "Ljudje nezadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
 print(spplot(regije,"Zadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje zadovoljni z življenjem v 2013",
+             main = "Ljudje zadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
 print(spplot(regije,"Zelo.zadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje zelo zadovoljni z življenjem v 2013",
+             main = "Ljudje zelo zadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
 
 dev.off()

@@ -1,4 +1,4 @@
-pdf("slike/grafi.pdf", paper= "a4")
+cairo_pdf("slike/grafi.pdf", family="Arial", onefile=TRUE, width= 7, height=7)
 
 #GRAF 1
 
@@ -9,6 +9,8 @@ barplot(zdr, beside = TRUE,
         col =c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
         legend.text = rownames(zdr), 
         xlim = c(0,70), ylim=c(0,50), main = "Zdravstveno stanje oseb po vseh starostih")
+
+
 
 VseStarosti <- c("Skupaj", "16-25","26-35","36-45","46-55","56-65","66+")
 

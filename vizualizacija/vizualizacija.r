@@ -59,7 +59,7 @@ cat("Rišem zemeljvid regij...\n")
 
 #Zemljevid 1
 
-pdf("slike/zemljevid1.pdf")
+cairo_pdf("slike/zemljevid1.pdf", family= "Arial")
 regije$povprecje <- Regije$Povprecje.2013
 min.povprecje <- min(Regije[12],na.rm=TRUE)
 max.povprecje <- max(Regije[12],na.rm=TRUE)
@@ -74,7 +74,7 @@ dev.off()
 
 
 #Zemljevid 2
-pdf("slike/zemljevid2.pdf")
+cairo_pdf("slike/zemljevid2.pdf", family="Arial", onefile = TRUE)
 regije$Povsem.nezadovoljen <- Regije$Povsem.nezadovoljen.2013
 regije$Nezadovoljen <- Regije$Nezadovoljen.2013
 regije$Zadovoljen <- Regije$Zadovoljen.2013
@@ -165,7 +165,7 @@ den <- koord[rep("Denmark",2),]
 den[1,]<-den[1,] - c(3,-1.2)
 koord["Denmark",] <- den[1,]
 
-pdf("slike/zemljevidE.pdf")
+cairo_pdf("slike/zemljevidE.pdf",family ="Arial",onefile=TRUE)
 
 rot <- ifelse(imena1 == "Portugal", 90, 0)
 evropa$Povprečje.2004 <- Evropa$Povprecje_2004

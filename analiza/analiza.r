@@ -50,9 +50,9 @@ library(mgcv)
 los <- loess(povp.r~zad)
 curve(predict(los,data.frame(zad=x)),
               add=TRUE,col="cyan")
-gam1 <- gam(povp.r~s(zad))
-curve(predict(gam1,data.frame(zad=x)),
-      add=TRUE,col="brown")
+# gam1 <- gam(povp.r~s(zad))
+# curve(predict(gam1,data.frame(zad=x)),
+#       add=TRUE,col="brown")
 
 detach(PovpR)
 attach(EkoRast)

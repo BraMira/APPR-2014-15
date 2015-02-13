@@ -69,68 +69,38 @@ ZivZad$Povprecje_2004 <- apply(ZivZad[1:2],1 ,function(x) round(mean(x),1))
 ZivZad$Povprecje_2012 <- apply(ZivZad[4:5],1 ,function(x) round(mean(x),1))
 
 
+#TABELA Y
+#Tabela povprečne neto plače po občinah 2005-2013
 
-#Za drugo fazo:
+uvoziPLACE <- function(){
+  y <- read.table("podatki/PovpPl.csv",sep=";", as.is = TRUE, na.strings = "-",
+                  row.names=1,
+                  col.names = c("Občine",2005:2013),
+                  fileEncoding = "Windows-1250")
 
-# uvoziSTANJE <- function(){
-#   # preberemo tabelo, pri čemer izpustimo prazne vrstice ter vsote in povprečja
-#   ZadStanje <- read.table("podatki/ZadovoljstvoSTANJE1213.csv", sep = ";",as.is = TRUE, skip = 6,na.strings= "NA",
-#                           col.names=c("Spol", "Zdravstveno stanje",paste0(procenti, "_2012"), paste0(procenti, "_2013")),
-#                           fileEncoding = "Windows-1250", nrows = 12)[c(-1, -7), c(-8, -14)]
-#   # pripravimo vsebino novih stolpcev
-#   frekvence <- unlist(ZadStanje[3:12])
-#   # poberemo podatke iz imen dobljenega  vektorja
-#   stolpci <- matrix(unlist(strsplit(gsub("(_[0-9]{4}).*$", "\\1",
-#                                          gsub("\\.", " ", names(frekvence))), "_")),
-#                     ncol = 2, byrow = TRUE)
-#   # naredimo faktor za zdravstvena stanja
-#   Stanja <- factor(ZadStanje$Zdravstveno.stanje, levels = stanja, ordered = TRUE)
-#   # naredimo faktor za zadovoljstvo, pri čemer vrednosti "Neznano" ne upoštevamo
-#   Zadovoljstvo <- factor(stolpci[,1], levels = procenti[1:4], ordered = TRUE)
-#   # podatke zberemo v novo tabelo brez imen vrstic
-#   return(
-#     data.frame(Spol = c(rep("Moški", 5), rep("Ženske", 5)),
-#                Zdravstveno.stanje = Stanja,
-#                Zadovoljstvo = Zadovoljstvo,
-#                Leto = as.numeric(stolpci[,2]),
-#                Frekvenca = frekvence,
-#                row.names = NULL)
-#   )
-# }
-#ZadStanje <- uvoziSTANJE()
+  
+  return(y)
+}
+PovpPl <- uvoziPLACE()
 
+#TABELA Y1
+#Tabela povprečne neto plače po regijah 2005-2013
+uvoziPLACER <- function(){
+  y1 <- read.table("podatki/PovpR.csv",sep=";",as.is=TRUE,
+                   row.names =1, 
+                   col.names = c("Regije",c(2005:2013)),
+                   fileEncoding = "Windows-1250")[-9,]
+  return(y1)
+}
+PovpR <- uvoziPLACER()
 
-
-#Funkcije, ki so dodane kot html, ne csv  
-
-# uvoziSTAROST2 <- function(){
-#   return(read.table("podatki/SplZdrStSTAROST.csv", sep = ";", as.is = TRUE,skip = 5,
-#                     row.names=1,
-#                     col.names = c("Starosti",paste0(stanja1,"_", 2005),paste0(stanja1, "_", 2006),paste0(stanja1, "_", 2007),paste0(stanja1, "_", 2008),paste0(stanja1, "_", 2009),paste0(stanja1, "_", 2010),paste0(stanja1, "_", 2011),paste0(stanja1, "_", 2012),paste0(stanja1, "_", 2013)),
-#                     fileEncoding = "Windows-1250"))
-#   
-# }
-# 
-# cat("Uvažam podatke o zdravstvenem stanju glede na STAROST ...\n")
-# ZdrStarost <- uvoziSTAROST2()
-
-
-
-# uvoziSPOL <- function(){
-#   return(read.table("podatki/SPOL/SplZdrStSPOL.csv", sep=";", as.is = TRUE, skip = 4,
-#                     row.names=1,
-#                     col.names = c("Stanje",paste0("S", 2005:2013), paste0("M", 2005:2013), paste0("Z",2005:2013)),
-#                     fileEncoding = "Windows-1250"))
-# }
-# cat("Uavažam podatke o zdravstvenem stanju oseb glede na SPOL... \n")
-
-# uvoziREGIJE <- function(){
-#   return(read.table("podatki/SplZadZivljREGIJE.csv", sep = ";", as.is = TRUE,
-#                     
-#                     fileEncoding = "Windows-1250"))
-#   
-# }
-# cat("Uvažam podatke o splošnem zadovoljstvu z življenjem po REGIJAH ...\n")
-# SplZadZivljREGIJE <- uvoziREGIJE()
-
-# ZdrSpol <- uvoziSPOL()
+#TABELA Z
+#Tabela ekonomske rasti po regijah v 2000-2012
+uvoziEkoRast <- function(){
+  z <- read.table("podatki/EkoRast.csv",sep=";",as.is=TRUE,
+                  col.names=c("BDP","Regije",2000:2012),
+                  fileEncoding="Windows-1250")[,-1]
+  rownames(z)<-t(z[1])
+  return(z)
+}
+EkoRast <- uvoziEkoRast()[,-1]

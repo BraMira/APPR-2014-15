@@ -1,4 +1,4 @@
-cairo_pdf("slike/grafi.pdf", family="Arial", onefile=TRUE, width= 7, height=7)
+cairo_pdf("slike/grafi.pdf", family="Arial", onefile=TRUE)
 
 #GRAF 1
 

@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{pdfpages}
+\usepackage{hyperref}
 \usepackage{url}
 
 \pagestyle{plain}
@@ -51,7 +52,9 @@ Uvoz sem začela s tabelami \textit{.csv}, ki so bile najlažje za uvoziti, zato
 
 Spodaj so vsi moji grafi:
 
-\includepdf[pages={1-6}]{../slike/grafi.pdf}
+
+
+ \includepdf[pages={1-6}, nup= 1x2]{../slike/grafi.pdf}
 
 \section{Analiza in vizualizacija podatkov}
 
@@ -65,8 +68,8 @@ V 3. fazi nisem imela večjih težav, malo več časa sem porabila le za končne
 
 Spodaj so vsi moji zemljevidi:
 \includepdf[pages={1}]{../slike/zemljevid1.pdf}
-\includepdf[pages={1-4}]{../slike/zemljevid2.pdf}
-\includepdf[pages={1-2}]{../slike/zemljevidE.pdf}
+\includepdf[pages={1-4}, nup=2x2]{../slike/zemljevid2.pdf}
+\includepdf[pages={1-2},nup=1x2]{../slike/zemljevidE.pdf}
 
 %\includegraphics{../slike/povprecna_druzina.pdf}
 

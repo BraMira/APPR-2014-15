@@ -36,25 +36,26 @@ imena <- as.character(regije$NAME_1)
 rownames(koordinate)<-imena
 names(imena)<-imena
 
-koordinate["Obalno-kraška",1] <- koordinate["Obalno-kraška",1] +0.1
+koordinate["Obalno-kraška",1] <- koordinate["Obalno-kraška",1] +0.08
 koordinate["Obalno-kraška",2] <- koordinate["Obalno-kraška",2] +0.025
 koordinate["Goriška",1]<- koordinate["Goriška",1]+0.08
 koordinate["Zasavska",1] <- koordinate["Zasavska",1]+0.008
-koordinate["Zasavska",2] <- koordinate["Zasavska",2]+0.02
-koordinate["Spodnjeposavska",1] <- koordinate["Spodnjeposavska",1]+0.06
-koordinate["Spodnjeposavska",2] <- koordinate["Spodnjeposavska",2] +0.008
+koordinate["Zasavska",2] <- koordinate["Zasavska",2]+0.01
+koordinate["Spodnjeposavska",1] <- koordinate["Spodnjeposavska",1]-0.021
+koordinate["Spodnjeposavska",2] <- koordinate["Spodnjeposavska",2] +0.02
 imena["Jugovzhodna Slovenija"] <- "Jugovzhodna\nSlovenija"
 imena["Notranjsko-kraška"] <- "Notranjsko-\nkraška"
 imena["Obalno-kraška"]<-"Obalno-\nkraška"
+koordinate["Pomurska",1] <- koordinate["Pomurska",1]+0.04
 
 #Koordinate za številke
 
 koordinate1 <- koordinate
 koordinate1[,2]<- koordinate1[,2] - 0.06
 koordinate1["Zasavska",1] <- koordinate1["Zasavska",1]+0.02
-koordinate1["Obalno-kraška",2] <- koordinate1["Obalno-kraška",2] -0.02
-koordinate1["Notranjsko-kraška",2] <- koordinate1["Notranjsko-kraška",2] -0.02
-koordinate1["Jugovzhodna Slovenija",2] <- koordinate1["Jugovzhodna Slovenija",2] -0.02
+koordinate1["Obalno-kraška",2] <- koordinate1["Obalno-kraška",2] -0.04
+koordinate1["Notranjsko-kraška",2] <- koordinate1["Notranjsko-kraška",2] -0.04
+koordinate1["Jugovzhodna Slovenija",2] <- koordinate1["Jugovzhodna Slovenija",2] -0.04
 cat("Rišem zemeljvid regij...\n")
 
 #Zemljevid 1
@@ -67,8 +68,8 @@ norm <- (Regije[12]-min.povprecje)/(max.povprecje-min.povprecje)
 n=100
 barve=rgb(1,1,(n:1)/n)[unlist(1+(n-1)*norm)]
 plot(regije,col = barve)
-text(koordinate1,labels=Regije$Povprecje.2013,cex = 0.45)
-text(koordinate,labels=imena,cex = 0.4)
+text(koordinate1,labels=Regije$Povprecje.2013,cex = 0.55)
+text(koordinate,labels=imena,cex = 0.65)
 title("Povprečno zadovoljstvo z življenjem v letu 2013")
 dev.off()
 
@@ -82,16 +83,16 @@ regije$Zelo.zadovoljen <- Regije$Zelo.zadovoljen.2013
 
 print(spplot(regije,"Povsem.nezadovoljen",col.regions=topo.colors(50),
              main = "Ljudje povsem nezadovoljni z življenjem v letu 2013",
-             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))            
+             sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))            
 print(spplot(regije,"Nezadovoljen",col.regions=topo.colors(50),
              main = "Ljudje nezadovoljni z življenjem v letu 2013",
-             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
+             sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 print(spplot(regije,"Zadovoljen",col.regions=topo.colors(50),
              main = "Ljudje zadovoljni z življenjem v letu 2013",
-             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
+             sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 print(spplot(regije,"Zelo.zadovoljen",col.regions=topo.colors(50),
              main = "Ljudje zelo zadovoljni z življenjem v letu 2013",
-             sp.layout = list(list("sp.text",koordinate,imena,cex=0.5))))
+             sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 
 dev.off()
 
@@ -140,20 +141,23 @@ koord["Finland",1] <- koord["Finland",1]+0.9
 koord["Latvia",1] <- koord["Latvia",1]+0.4
 koord["Lithuania",1] <- koord["Lithuania",1]+0.4
 koord["Italy",1] <- koord["Italy",1]-0.4
-koord["Austria",1] <- koord["Austria",1]+0.4
+koord["Austria",1] <- koord["Austria",1]+0.5
 koord["Croatia",2] <- koord["Croatia",2]+0.4
 koord["Croatia",1] <- koord["Croatia",1]+0.3
-koord["Slovakia",2] <- koord["Slovakia",2]+0.2
+koord["Slovakia",2] <- koord["Slovakia",2]+0.1
 koord["Slovakia",1] <- koord["Slovakia",1]+0.2
 koord["Slovenia",2] <- koord["Slovenia",2]-0.1
 koord["Slovenia",1] <- koord["Slovenia",1]-0.2
 koord["Malta",2] <- koord["Malta",2]-0.5
-
-imena1["United Kingdom"] <- "United\nKingdom"
+koord["Portugal",2] <- koord["Portugal",2]-0.1
+imena1["United Kingdom"] <- "UK"
 imena1["Slovenia"] <- "SLO"
 imena1["Croatia"]<- "CRO"
 imena1["Switzerland"]<- "CH"
 imena1["Belgium"]<- "BEL"
+imena1["Greece"]<- "GR"
+imena1["Czech Republic"]<- "CZ"
+imena1["Slovakia"]<- "SK"
 
 lux <- koord[rep("Luxembourg",2),]
 lux[1,]<-lux[1,] - c(1,1.5)
@@ -164,7 +168,7 @@ koord["Netherlands",] <- net[1,]
 den <- koord[rep("Denmark",2),]
 den[1,]<-den[1,] - c(3,-1.2)
 koord["Denmark",] <- den[1,]
-
+imena1["Luxembourg"]<-"LUX"
 cairo_pdf("slike/zemljevidE.pdf",family ="Arial",onefile=TRUE)
 
 rot <- ifelse(imena1 == "Portugal", 90, 0)
@@ -172,7 +176,7 @@ evropa$Povprečje.2004 <- Evropa$Povprecje_2004
 p2004 <- !is.na(Evropa$Povprecje_2004)
 print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2004",
-             sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.4,srt=rot[p2004]),
+             sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.55,srt=rot[p2004]),
                               list("sp.polygons",evropa[is.na(Evropa[,3]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),
                               list("sp.lines",Line(den),col="black")),
@@ -182,7 +186,7 @@ evropa$Povprečje.2012 <- Evropa$Povprecje_2012
 p2012 <- !is.na(Evropa$Povprecje_2012)
 print(spplot(evropa,"Povprečje.2012",col.regions=terrain.colors(50),
              main = "Povprečna pričakovana starost v letu 2012",
-             sp.layout = list(list("sp.text",koord[p2012,],imena1[p2012],cex=0.4, srt=rot[p2012]),
+             sp.layout = list(list("sp.text",koord[p2012,],imena1[p2012],cex=0.55, srt=rot[p2012]),
                               list("sp.polygons",evropa[is.na(Evropa[,6]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),
                               list("sp.lines",Line(net),col="black"),

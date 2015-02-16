@@ -39,6 +39,8 @@ Za 4. fazo sem uvozila še tri tabele iz katerih želim po regijah gledati povez
 
 * http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=3268704S&ti=&path=../Database/Okolje/32_trajnostni_razvoj/05_blaginja/10_32687_ekonomska_rast/&lang=2
 
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=1418806S&ti=Podjetja+po+kohezijskih+in+statisti%E8nih+regijah%2C+Slovenija%2C+letno&path=../Database/Ekonomsko/14_poslovni_subjekti/01_14188_podjetja/&lang=2
+
 ## Program
 
 Glavni program se nahaja v datoteki `projekt.r`. Ko ga poženemo, se izvedejo

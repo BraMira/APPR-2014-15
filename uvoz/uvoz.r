@@ -67,8 +67,9 @@ ZivZad$Zenske_2012 <- as.numeric(Value[SEX=="Females" & TIME =="2012"])
 detach(ZivEvr)
 ZivZad$Povprecje_2004 <- apply(ZivZad[1:2],1 ,function(x) round(mean(x),1))
 ZivZad$Povprecje_2012 <- apply(ZivZad[4:5],1 ,function(x) round(mean(x),1))
+cat("Uvažam evropske podatke...\n")
 
-
+cat("Uvažam tabele za 4. fazo ... \n")
 #TABELA Y
 #Tabela povprečne neto plače po občinah 2005-2013
 
@@ -104,3 +105,18 @@ uvoziEkoRast <- function(){
   return(z)
 }
 EkoRast <- uvoziEkoRast()[,-1]
+
+#TABELA PODJETIJ
+#Tabela podjetij po regijah 2008-2013
+pod <-c("Število podjetij","Število oseb,ki delajo","Prihodek",
+        "Število oseb,ki delajo na podjetje v regiji")
+uvoziPODJETJA <-function(){
+  p<-read.table("podatki/Podjetja.csv",sep=";",as.is=TRUE,
+                row.names=1,
+                col.names=c("Regije",paste0(pod,"_2008"),paste0(pod,"_2009"),paste0(pod,"_2010"),
+                            paste0(pod,"_2011"),paste0(pod,"_2012"),paste0(pod,"_2013")),
+                fileEncoding = "Windows-1250")[-9,]
+  return(p)
+}
+Podjetja <- uvoziPODJETJA()
+cat("Tabele uvožene! \n")

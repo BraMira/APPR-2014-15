@@ -70,11 +70,12 @@ barve=rgb(1,1,(n:1)/n)[unlist(1+(n-1)*norm)]
 plot(regije,col = barve)
 text(koordinate1,labels=Regije$Povprecje.2013,cex = 0.55)
 text(koordinate,labels=imena,cex = 0.65)
-title("Povprečno zadovoljstvo z življenjem v letu 2013")
+title("Zemljevid 1: Povprečno zadovoljstvo z življenjem v letu 2013")
 dev.off()
 
 
 #Zemljevid 2
+
 cairo_pdf("slike/zemljevid2.pdf", family="Arial", onefile = TRUE)
 regije$Povsem.nezadovoljen <- Regije$Povsem.nezadovoljen.2013
 regije$Nezadovoljen <- Regije$Nezadovoljen.2013
@@ -82,16 +83,16 @@ regije$Zadovoljen <- Regije$Zadovoljen.2013
 regije$Zelo.zadovoljen <- Regije$Zelo.zadovoljen.2013
 
 print(spplot(regije,"Povsem.nezadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje povsem nezadovoljni z življenjem v letu 2013",
+             main = "Zemljevid 2: Ljudje povsem nezadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))            
 print(spplot(regije,"Nezadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje nezadovoljni z življenjem v letu 2013",
+             main = "Zemljevid 3: Ljudje nezadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 print(spplot(regije,"Zadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje zadovoljni z življenjem v letu 2013",
+             main = "Zemljevid 4: Ljudje zadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 print(spplot(regije,"Zelo.zadovoljen",col.regions=topo.colors(50),
-             main = "Ljudje zelo zadovoljni z življenjem v letu 2013",
+             main = "Zemljevid 5: Ljudje zelo zadovoljni z življenjem v letu 2013",
              sp.layout = list(list("sp.text",koordinate,imena,cex=0.8))))
 
 dev.off()
@@ -175,7 +176,7 @@ rot <- ifelse(imena1 == "Portugal", 90, 0)
 evropa$Povprečje.2004 <- Evropa$Povprecje_2004
 p2004 <- !is.na(Evropa$Povprecje_2004)
 print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
-             main = "Povprečna pričakovana starost v letu 2004",
+             main = "Zemljevid 6: Povprečna pričakovana starost v letu 2004",
              sp.layout = list(list("sp.text",koord[p2004,],imena1[p2004],cex=0.55,srt=rot[p2004]),
                               list("sp.polygons",evropa[is.na(Evropa[,3]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),
@@ -185,7 +186,7 @@ print(spplot(evropa,"Povprečje.2004",col.regions=terrain.colors(50),
 evropa$Povprečje.2012 <- Evropa$Povprecje_2012
 p2012 <- !is.na(Evropa$Povprecje_2012)
 print(spplot(evropa,"Povprečje.2012",col.regions=terrain.colors(50),
-             main = "Povprečna pričakovana starost v letu 2012",
+             main = "Zemljevid 7: Povprečna pričakovana starost v letu 2012",
              sp.layout = list(list("sp.text",koord[p2012,],imena1[p2012],cex=0.55, srt=rot[p2012]),
                               list("sp.polygons",evropa[is.na(Evropa[,6]),],fill="white"),
                               list("sp.lines",Line(lux),col="black"),

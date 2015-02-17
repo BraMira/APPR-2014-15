@@ -119,4 +119,14 @@ uvoziPODJETJA <-function(){
   return(p)
 }
 Podjetja <- uvoziPODJETJA()
+
+#TABELA ŠT PREBIVALCEV
+uvoziPreb <- function(){
+  preb <- read.table("podatki/StPrebivalcev.csv",sep=";",as.is=TRUE,
+                     col.names=c("Spol","Regije",2005:2014),
+                     fileEncoding="Windows-1250")[,-1]
+  rownames(preb)<-t(preb[1])
+  return(preb)
+}
+Prebivalstvo <- uvoziPreb()[,-1]
 cat("Tabele uvožene! \n")

@@ -31,13 +31,11 @@ Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
 
 Skozi analize teh podatkov bi rada prikazala povezavo med splošnim zdravstvenim stanjem in zadovoljstvom z življenjem oseb v Sloveniji in prikazala te podatke na zemljevidu Slovenije po regijah.
 
-Za 4. fazo sem uvozila še tri tabele iz katerih želim po regijah gledati povezave tudi z gospodarskega vidika.
+Za 4. fazo sem uvozila še štiri tabele iz katerih želim po regijah gledati povezave tudi z gospodarsko-ekonomskega vidika.
 
 * http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0772615S&ti=&path=../Database/Dem_soc/07_trg_dela/10_place/02_07726_kaz_place/&lang=2
 
 * http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0772610S&ti=&path=../Database/Dem_soc/07_trg_dela/10_place/02_07726_kaz_place/&lang=2
-
-* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=3268704S&ti=&path=../Database/Okolje/32_trajnostni_razvoj/05_blaginja/10_32687_ekonomska_rast/&lang=2
 
 * http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=1418806S&ti=Podjetja+po+kohezijskih+in+statisti%E8nih+regijah%2C+Slovenija%2C+letno&path=../Database/Ekonomsko/14_poslovni_subjekti/01_14188_podjetja/&lang=2
 

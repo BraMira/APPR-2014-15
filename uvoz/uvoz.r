@@ -95,16 +95,16 @@ uvoziPLACER <- function(){
 }
 PovpR <- uvoziPLACER()
 
-#TABELA Z
-#Tabela ekonomske rasti po regijah v 2000-2012
-uvoziEkoRast <- function(){
-  z <- read.table("podatki/EkoRast.csv",sep=";",as.is=TRUE,
-                  col.names=c("BDP","Regije",2000:2012),
-                  fileEncoding="Windows-1250")[,-1]
-  rownames(z)<-t(z[1])
-  return(z)
-}
-EkoRast <- uvoziEkoRast()[,-1]
+# #TABELA Z
+# #Tabela ekonomske rasti po regijah v 2000-2012
+# uvoziEkoRast <- function(){
+#   z <- read.table("podatki/EkoRast.csv",sep=";",as.is=TRUE,
+#                   col.names=c("BDP","Regije",2000:2012),
+#                   fileEncoding="Windows-1250")[,-1]
+#   rownames(z)<-t(z[1])
+#   return(z)
+# }
+# EkoRast <- uvoziEkoRast()[,-1]
 
 #TABELA PODJETIJ
 #Tabela podjetij po regijah 2008-2013

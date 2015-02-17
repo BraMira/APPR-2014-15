@@ -76,27 +76,57 @@ cat("Rišem grafe z napovedmi...\n")
 #Povezave med podatki in napovedi
 cairo_pdf("slike/Napovedi.pdf", family="Arial", onefile = TRUE)
 attach(st_podjetij)
-
 attach(ZadRegije[-1,])
+
 zad <- c(Povprecje.2012, Povprecje.2013)
 leta <-c(X2012,X2013)
 plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Število prebivalcev",
      main="Graf 12: Povezava med zadovoljstvom z življenjem \n in številom podjetij v regijah")
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
-abline(lm(leta~zad),col="blue")
-curve(predict(lm(leta~I(zad^2)+zad),data.frame(zad=x)),add=TRUE,col="violet")
+lin <-lm(leta~zad)
+abline(lin,col="blue")
+kv <-lm(leta~I(zad^2)+zad)
+curve(predict(kv,data.frame(zad=x)),add=TRUE,col="violet")
+
+library(mgcv)
+loess <- loess(leta~zad)
+curve(predict(loess, data.frame(zad=x)),add=TRUE,col="orange")
 legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
+resid <- sapply(list(lin,kv,loess), function(x) sum(x$residuals^2)) #Tisti ki ima manj je boljši model
+napoved <- function(x, model){predict(model,data.frame(zad=x))}
+plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Število prebivalcev",
+     xlim=c(6.6,10),ylim=c(0.06,0.15))
+points(Povprecje.2012,X2012)
+points(Povprecje.2013,X2013,pch=19)
+curve(napoved(x, lin),col="blue",add=TRUE)
+curve(napoved(x, kv),col="violet",add=TRUE)
+curve(napoved(x,loess),col="orange",add=TRUE)
+
 detach(st_podjetij)
+
+
 attach(st_zaposlenih)
 leta <-c(X2012,X2013)
 plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število zaposlenih/Število prebivalcev",
      main="Graf 13: Povezava med zadovoljstvom z življenjem \n in številom zaposlenih v regijah")
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
-abline(lm(leta~zad),col="green")
-
+lin1 <-lm(leta~zad)
+abline(lin1,col="blue")
+kv1 <-lm(leta~I(zad^2)+zad)
+curve(predict(kv1,data.frame(zad=x)),add=TRUE,col="violet")
+loess1 <- loess(leta~zad)
+curve(predict(loess1, data.frame(zad=x)),add=TRUE,col="orange")
+resid1 <- sapply(list(lin1,kv1,loess1), function(x) sum(x$residuals^2))
 legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
+plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Število prebivalcev",
+     xlim=c(6.6,10),ylim=c(0.25,0.9))
+points(Povprecje.2012,X2012)
+points(Povprecje.2013,X2013,pch=19)
+curve(napoved(x, lin1),col="blue",add=TRUE)
+curve(napoved(x, kv1),col="violet",add=TRUE)
+curve(napoved(x,loess1),col="orange",add=TRUE)
 detach(st_zaposlenih)
 
 # zap_pod <- c(as.numeric(zap.R[,5]),as.numeric(zap.R[,6]))
@@ -120,14 +150,21 @@ legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
 # abline(lin, col="blue")
 
 lin2 <- lm(povp.r ~ zad)
-abline(lin2,col="red")
+abline(lin2,col="blue")
+kv2 <-lm(povp.r~I(zad^2)+zad)
+curve(predict(kv2,data.frame(zad=x)),add=TRUE,col="violet")
+loess2 <- loess(povp.r~zad)
+curve(predict(loess2, data.frame(zad=x)),add=TRUE,col="orange")
+resid2 <- sapply(list(lin2,kv2,loess2), function(x) sum(x$residuals^2))
+
 #curve(predict(lin2,data.frame(zad=x)), add = TRUE)
 # kv <- lm(povp.r~ I(zad^2)+zad)
 # curve(predict(kv, data.frame(zad=x)), add = TRUE, col = "blue")
 tri <- lowess(zad,povp.r)
 # points(tri,col="green",pch=19)
 lines(tri, col="green")
-
+#curve(predict(tri,data.frame(zad=x)),add=TRUE,col="red")
+vsota.kvadratov <- sapply(list(lin2,tri),function(x) sum(x$residuals^2))
 # library(mgcv)
 # los <- loess(povp.r~zad)
 # curve(predict(los,data.frame(zad=x)),

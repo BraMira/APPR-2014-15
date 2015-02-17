@@ -38,26 +38,123 @@ Vse podatke bom pridobila s SURS-a iz naslednjih povezav:
 \item \url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872035S\&ti=\&path=../Database/Dem\_soc/08\_zivljenjska\_raven/18\_08720\_silc\_zadovol\_zivljenje/\&lang=2}
 
 \item  \url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0872040S\&ti=\&path=../Database/Dem\_soc/08\_zivljenjska\_raven/18\_08720\_silc\_zadovol\_zivljenje/\&lang=2}
-\end{itemize}
+
 Vsi podatki so na voljo v naslednjih oblikah: \textit{.txt, .csv, .htm, .xls}.
 
-Skozi analize teh podatkov bi rada prikazala povezavo med splošnim zdravstvenim stanjem in zadovoljstvom z življenjem oseb v Sloveniji in prikazala te podatke na zemljevidu Slovenije po regijah.
-\newpage
+V drugi fazi sem dodala še eno tabelo, ki prikazuje podatke za Evropo in sicer pričakovano življenjsko dobo glede na samoocenitev zdravja. 
+\item
+\url{ http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_silc_17&lang=en}
+
+Vsi podatki so na voljo v naslednjih oblikah: .txt, .csv, .htm, .xls.
+
+Za 4. fazo sem uvozila še štiri tabele iz katerih želim po regijah gledati povezave tudi z gospodarsko-ekonomskega vidika.
+
+\item
+\url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0772615S&ti=&path=../Database/Dem_soc/07_trg_dela/10_place/02_07726_kaz_place/&lang=2}
+
+\item
+\url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0772610S&ti=&path=../Database/Dem_soc/07_trg_dela/10_place/02_07726_kaz_place/&lang=2}
+
+\item
+\url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=1418806S&ti=Podjetja+po+kohezijskih+in+statisti%E8nih+regijah%2C+Slovenija%2C+letno&path=../Database/Ekonomsko/14_poslovni_subjekti/01_14188_podjetja/&lang=2}
+
+\item
+\url{http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=05C2002S&ti=&path=../Database/Dem_soc/05_prebivalstvo/10_stevilo_preb/10_05C20_prebivalstvo_stat_regije/&lang=2}
+\end{itemize}
+\subsection{Cilj}
+Skozi analize teh podatkov bi rada pokazala:
+\begin{itemize}
+\item Kakšno je zdravstevno stanje v Sloveniji glede na spol in starost
+\item Kako Slovenci samoocenjujemo zadovoljstvo z življenjem glede na spol, starost in regije
+\item Podroben prikaz zadovoljstva po regijah
+\item Kako se je spremenila pričakovana življenjska doba v Evropi
+Na podatke in življenja ljudi je imela velik vpliv gospodarska kriza, zato sem analizirala tudi:
+\item Kako so nihale povprečne neto mesečne plače v regijah in občinah
+\item Kako se je spremenilo število podjetij,število  zaposlenih v podjetjih in število zaposlenih na podjetje v regiji
+\item Kako povezavo imajo te spremenjljivke z zadovoljstvom
+\item Kaj lahko napovemo za prihodnost
+\end{itemize}
+%\newpage
 \section{Obdelava, uvoz in čiščenje podatkov}
+\subsection{Opis dela}
 V drugi fazi projekta sem uvozila v R 5 tabel in 6 grafov. Dve od teh tabel sta bile oblike \textit{.csv} in tri \textit{.htm}, grafi pa so zaradi mojih podatkov vsi stolpični. Tako lahko sedaj v tabelah pogledamo podatke o Splošnem zdravstvenem stanju oseb po spolu in starosti, torej kakšno je zdravje moških in žensk različnih starosti, in Splošnim zadovoljstvom oseb glede na starost,zdravstveno stanje in regije, od koder lahko razbiramo podatke o tem kako so ljudje različnih starosti, različnih zdravstvenih stanj in živeči v različnih regijah države, samoocenili svoje zadovoljstvo z življenjem. V prvem grafu sem predstavila zdravstveno stanje oseb po vseh starostih v letih 2005-2013, v naslednjem grafu pa sem izolirala samo leto 2013, kjer so prikazane vse starostne skupine.Tretji graf prikazuje zdravstveno stanje oseb obeh spolov skupaj v letih 2005-2013, v sledečem grafu sem spet izolirala leto 2013 in pogledala stanja za moške in ženske posebej. V petem grafu je predstavljeno zadovoljstvo z življenjem oseb glede na zdravstveno stanje v letu 2013, kjer sem pogledala zadovoljstvo za moške in ženske posebej, izbrala sem pa tudi mejna zdravstvena stanja; torej zelo dobro in zelo slabo. Zadnji graf pa prikazuje zadovoljstvo z življenjem glede na starost v letu 2013, kjer sem spet pogledala zadovoljstvo posebej za moške in ženske, izbrala pa sem si 3 različne starostne skupine: osebe od 16 do 25 let, 36 do 45 let in 55 do 65 let.
 
 Uvoz sem začela s tabelami \textit{.csv}, ki so bile najlažje za uvoziti, zato sem za njihov uvoz izbrala najbolj zapletene podatke, katere sem pozneje počistila tako, da so namesto dveh glavnih stolpcev kreirala enega, ki vsebuje podatke obeh. Zatem so prišle na vrsto HTML tabele, s katerimi sem se morala veliko bolj potruditi, saj na začetku nisem obvladala vseh ukazov. Po čiščenju nepotrebnih podatkov in preimenovanjih stolpcev in vrstic, sem se lotila grafov. Kar je bilo dokaj enostavno, ko sem vedela, kaj vsaka funckija počne in kako jo uporabiš.
 
  Pri uvozu sem se srečevala z različnimi težavami, katere sem sproti odpravljala, npr.: kako poteka uvoz iz html-ja,kako oblikovati podatke čim bolj učinkovito in pregledno, kako spremeniš imena vrstic, kako poiskati določene podatke v grafu in jih vključiti v graf ter kodiranje.
+\subsection{Opis uvoženih podatkov}
+Spodaj bom opisala podatke uvoženih tabel.
+\begin{enumerate}
+\item \verb+ZdrStarost+ oz. Zdravstevno stanje glede na starost
+\begin{enumerate}
+\item Imena vrstic: \textit{Zelo dobro, Dobro, Srednje, Slabo, Zelo slabo}
+\item \textit{Skupaj (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Od 16 do 25 let (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Od 26 do 35 let (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Od 36 do 45 let (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Od 46 do 55 let (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Od 56 do 65 let (leta 2005-2013)} : imenska spremenljivka
+\item \textit{66 let in več (leta 2005-2013)} : imenska spremenljivka
+\end{enumerate}
+\item \verb+ZdrSpol+ oz. Zdravstevno stanje glede na spol
+\begin{enumerate}
+\item Imena vrstic: \textit{Zelo dobro, Dobro, Srednje, Slabo, Zelo slabo}
+\item \textit{Skupaj (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Moški (leta 2005-2013)} : imenska spremenljivka
+\item \textit{Ženske (leta 2005-2013)} : imenska spremenljivka
+\end{enumerate}
+\item \verb+ZadStarosti+ oz. Zadovoljstvo z življenjem glede na starost
+\begin{enumerate}
+\item Imena vrstic: \textit{Moški/Ženske - Starostne skupine - Skupaj,Moški/Ženske - 16-25 let,Moški/Ženske - 26-35 let,Moški/Ženske - 36-45 let,Moški/Ženske - 46-55 let,Moški/Ženske - 56-65 let,Moški/Ženske - 66 ali več let}
+\item \textit{Povsem nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zelo zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Neznano (leta 2012,2013)} : imenska spremenljivka
+\item \textit{Povprečje (leta 2012,2013)} : imenska spremenljivka
+\end{enumerate}
+\item \verb+ZadStanje+ oz. Zadovoljstvo z življenjem glede na zdravstveno stanje
+\begin{enumerate}
+\item Imena vrstic: \textit{Moški/ženske - Zelo dobro,Moški/ženske - Dobro,Moški/ženske - Srednje,Moški/ženske - Slabo,Moški/ženske - Zelo slabo}
+\item \textit{Povsem nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zelo zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Neznano (leta 2012,2013)} : imenska spremenljivka
+\item \textit{Povprečje (leta 2012,2013)} : imenska spremenljivka
+\end{enumerate}
+\item \verb+ZadRegije+ oz. Zadovoljstvo z življenjem glede na statistične regije
+\begin{enumerate}
+\item Imena vrstic: \textit{Slovenija, Pomurska,Podravska, Koroška, Savinjska, Zasavska, Spodnjeposavska, Jugovzhodna Slovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška,Goriška, Obalno-kraška}
+\item \textit{Povsem nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Nezadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Zelo zadovoljen (leta 2012,2013)} : urejenostna spremenljivka
+\item \textit{Neznano (leta 2012,2013)} : imenska spremenljivka
+\item \textit{Povprečje (leta 2012,2013)} : imenska spremenljivka
+\end{enumerate}
+\end{enumerate}
 
-Spodaj so vsi moji grafi:
+\subsection{Prestavitev in interpretacija grafov}
+\includepdf[pages={1,2}, nup=1x2]{../slike/starosti.pdf}
 
+\subsubsection{Interpretacija}
+\verb+Graf 1+ prikazuje zdravstveno stanje oseb po vseh starostih v letih 2005 do 2013. Opazimo, da zdravstveno stanje skozi leta ni le padalo ali rastlo, ampak je nihalo v obe smeri. Oseb z \textit{Zelo dobrim} zdravstvenim stanjem je v vedno več, saj jih je leta 2013 bilo že preko 20. Število oseb  z \textit{dobrim} zdravstvenim stanjem(največ ljudi je v tej skupini) je v letih nihalo, vendar jih je leta 2013 bilo več kot leta 2005. Število oseb s \textit{srednjim} zdravstvenim stanjem je padlo, medtem, ko je s textit{slabim} in \textit{zelo slabim} stagniralo, vendar je število v letu 2013 manjše kot v 2005, kar pomeni, da je oseb s šibkim zdravjem vedno manj.
+\verb+Graf 2+ prikazuje zdravstvena stanja po starostnih skupinah v letu 2013. Iz grafa lahko razberemo nekatere informacije, ki potrjujejo domneve, da so mladi(\textit{16-25 let}) zelo zdravi, najstarejši(\textit{66 in več let}) ljudje pa najmanj zdravi. V drugi starostni skupini \textit{26-35 let} se število oseb s dobrim in zelo slabim zdravstvenim stanjem poveča, medtem ko se z zelo dobrim zmanjša. Ta razlika se poveča še bolj v skupini \textit{36-45 let}, v \textit{46-55 let} pa je oseb s srednjim zdravstvenim stanjem že toliko kot z dobrim.
+\includepdf[pages={1,2}, nup=1x2]{../slike/spoli.pdf}
+\subsubsection{Interpretacija}
+V \verb+Grafu 4+ lahko vidimo, kako se je spreminjalo zdravstveno stanje obeh spolov skupaj v letih 2005 do 2013. Število oseb z  \textit{zelo dobrim} stanje se je povečalo, medtem ko se je število \textit{srednjih, slabih, zelo slabih} zmanjšalo. Število \textit{dobrih} pa je skozi leta nihalo, vendar se je nekoliko povečalo v primerjavi z letom 2005.
+\verb+Graf 4+ prikazuje zdravstvena stanja oseb ločena po spolu v letu 2013, tako lahko primerjamo moške in ženske. Vidimo, da pri moških prevladuje \textit{dobro} zdravstveno stanje, sledi \textit{zelo dobro} in \textit{srednje}, medtem ko pa pri ženskah \textit{dobremu} sledi \textit{srednje} in nato \textit{zelo dobro}. Pri ženskah je tudi opaziti, da je več \textit{slabih} oseb kot pri moških. Iz tega bi lahko interpretirali, da so ženske manj zdrave kot moški.
 
+ \includegraphics[scale=0.8]{../slike/zad_stanje.pdf}
 
- \includepdf[pages={1-6}, nup= 1x2]{../slike/grafi.pdf}
-
+\subsubsection{Interpretacija}
+\verb+Graf 5+ prikazuje zadovoljstvo z življenjem glede na zdravstveno stanje ljudi v letu 2013. Za prikaz sem si izbrala mejni skupini pri moških in ženskah, torej \textit{zelo dobro} in \textit{zelo slabo}.  Iz grafa lahko vidimo, da so najbolj zadovoljni moški in ženske z \textit{zelo dobrim} zravstvenim stanjem, medtem, ko so najmanj zadovoljni moški z \textit{zelo slabim} zdravstvenim stanjem, ki jim sledijo ženske z \textit{zelo slabim} zdravstvenim stanjem.
+\includegraphics[scale=0.8]{../slike/zad_star.pdf}
+\subsubsection{Interpretacija}
+\verb+Graf 6+ prikazuje zadovoljstvo z življenjem glede na starost v letu 2013. Za skupine za prikaz sem sem izbrala moške in ženske starostnih skupin \textit{16-25 let, 36-45 let} in \textit{55-65 let}. Iz grafa preberemo, da so najbolj zadovoljne ženske med 16-25 letom, sledijo jim moški med 16-25 leti. Najmanj zadovoljni pa so pričakovano moški in ženske med 55-65 let. Pri vseh starostnih skupinah je največ jih izbralo zadovoljstvo med 7 in 8 procenti. Zaključimo lahko, da so mladi(16-25 let) najzadovoljnejši, najstarejši (56-65 let) pa najmanj zadovoljni.
 \section{Analiza in vizualizacija podatkov}
-
+\subsection{Opis dela}
 V tretji fazi projekta sem v R uvozila 7 zemljevidov in eno novo tabelo. Pet od teh zemljevidov so zemljevidi Slovenije, ostala dva pa zemljevida Evrope. Mojo analizo sem začela tako, da sem na internetu poiskala zemljevid in se spoznala z že pripravljenimi funkcijami v R-u. Na prvem zemljevidu sem predstavila povprečno zadovoljstvo z življenjem v letu 2013 po regijah iz katerega je razvidno kako so ljudje v povprečju zadovoljni z življenjem.
 
 Na naslednjih zemljevidih sem predstavila podatke malo bolj podrobno, saj na štirih zemljevidih prikazujem ljudi, ki so povsem nezadovoljni z življenjem, nezadovoljni, zadovoljni in zelo zadovoljni. Tako je barvno lepo vidno, kje je zadovoljstvo boljše in kje slabše.
@@ -65,16 +162,69 @@ Na naslednjih zemljevidih sem predstavila podatke malo bolj podrobno, saj na št
 Ker sem po uvozu teh zemljevidov bila mnenja, da bi bilo potrebno predstaviti še kak podatek več tudi na evropski ravni, sem se odločila da uvozim novo tabelo. Nova tabela je bila oblike \textit{.csv}, dobila pa sem jo s strani \url{http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_silc_17&lang=en}. Prikazuje podatke za pri\-ča\-ko\-va\-no življenjsko starost po vseh državah Evrope. To sicer ni enako kot zadovoljstvo z življenjem, vendar je pričakovana življenjska doba tudi dober pokazatelj zdravja in zadovoljstva z življenjem. Po uvozu tabele za moške in ženske za leto 2004 in 2012, sem izračunala povprečja za ti dve leti, za lažji prikaz na zemljevidu.  Tako lahko na dveh zemljevidih vidimo ta dva podatka, seveda je za leto 2012 več podatkov kot za leto 2004 in lahko iz njega dobimo več zaključkov.
 
 V 3. fazi nisem imela večjih težav, malo več časa sem porabila le za končne podrobnosti pri zemljevidu Evrope.
-
-Spodaj so vsi moji zemljevidi:
-\includepdf[pages={1}]{../slike/zemljevid1.pdf}
+\subsection{Opis novih uvoženih podatkov}
+Za prestavitev podatkov tudi na evropski ravni sem uvozila tabelo Povprečnih pričakovanih življenjskih dob v letu 2004 in 2012. Na začetku se je tabela imenovala \verb+Evropa+ in je imela spremenljivke \textit{time, geo, sex} in \textit{value}. Po preurejanjih sem oblikovala novo tabelo.
+\begin{enumerate}
+\item \verb+ZivZad+ oz. Povprečna pričakovana življenjska doba v Evropi
+\begin{enumerate}
+\item Imena vrstic: \textit{31 evropskih držav}
+\item \textit{Moški/Ženske 2004/2012} : imenska spremenljivka
+\item \textit{Povprečje 2004/2012} : imenska spremenljivka
+\end{enumerate}
+\end{enumerate}
+\subsection{Predstavitev in interpretacija zemljevidov}
+\includegraphics{../slike/zemljevid1.pdf}
+\subsubsection{Interpretacija}
 \includepdf[pages={1-4}, nup=2x2]{../slike/zemljevid2.pdf}
+\subsubsection{Interpretacija}
 \includepdf[pages={1-2},nup=1x2]{../slike/zemljevidE.pdf}
+\subsubsection{Interpretacija}
 
 %\includegraphics{../slike/povprecna_druzina.pdf}
 
 \section{Napredna analiza podatkov}
+\subsection{Opis postopka dela}
+Za 4. fazo projekta sem se po nasvetu profesorja osredotočila na analizo podatkov za regije. Ker sem za regije imela le eno tabelo, sem uvozila še štiri tabele s katerimi sem si pomagala pri analizi. Ko sem iskala ideje za analizo podatkov, sem se začela osredotočati na gospodarske in ekonomske vidike, zato se tudi nove tabele osredotočajo na to tematiko.
 
-%\includegraphics{../slike/naselja.pdf}
+Pri delu nisem imela večjih težav, saj sem vse težave sproti odpravljala.
+\subsection{Prestavitev novo uvoženih podatkov}
+Prvo tabelo, ki jo bom opisala, sem uvozila samo za pomoč izračuna normalnih vrednosti, ostale pa sem uporabili pri analizi in napovedi podatkov. Pri vseh tabelah(razen druge) so imena vrstic: \textit{Slovenija, Pomurska,Podravska, Koroška, Savinjska, Zasavska, Spodnjeposavska, Jugovzhodna Slovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška,Goriška, Obalno-kraška}
+\begin{enumerate}
+\item \verb+Prebivalstvo+ oz. Število prebivalcev v regijiah
+\begin{enumerate}
+\item \textit{2005-2014}: številska spremenljivka
+\end{enumerate}
+\item \verb+PovpPl+ oz. Povprečne mesečne neto plače v vseh slovenskih občinah
+\begin{enumerate}
+\item Imena vrstic: \textit{211 slovenskih občin}
+\item \textit{2005-2013} : številska spremenljivka
+\item \textit{Povprečje} : imenska spremenljivka
+\end{enumerate}
+\item \verb+PovpR+ oz. Povprečne mesečne neto plače v regijah
+\begin{enumerate}
+\item \textit{2005-2013} : številska spremenljivka
+\end{enumerate}
+\item \verb+Podjetja+ oz. Podjetja po statistničnih regijah
+\begin{enumerate}
+\item \textit{Število podjetij 2008-2013} : imenska spremenljivka
+\item \textit{Število oseb, ki delajo 2008-2013} : imenska spremenljivka
+\item \textit{Prihodek 2008-2013} : imenska spremenljivka
+\item \textit{Število oseb, ki delajo na podjetje v regiji 2008-2013} : imenska spremenljivka
+\end{enumerate}
+\end{enumerate}
+\subsection{Predstavitev in interpretacija grafov}
+\includepdf[pages={1,2}, nup = 1x2]{../slike/Povprecne_place.pdf}
+\subsubsection{Interpretacija}
+\includepdf[pages={1,2,3},nup=1x3]{../slike/Podjetja.pdf}
+\subsubsection{Interpretacija}
+\subsection{Predstavitev in interpretacija napovedi}
+\includepdf[pages={1,2},nup=1x2]{../slike/Napovedi1.pdf}
+\subsubsection{Interpretacija}
+\includepdf[pages={1,2},nup=1x2]{../slike/Napovedi2.pdf}
+\subsubsection{Interpretacija}
+\includepdf[pages={1,2},nup=1x2]{../slike/Napovedi3.pdf}
+\subsubsection{Interpretacija}
+\subsection{Zaključek}
+
 
 \end{document}

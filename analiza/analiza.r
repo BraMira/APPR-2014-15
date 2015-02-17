@@ -10,8 +10,8 @@ barve <- c("green4","blue","purple","orange","snow4","violet","red1","green","vi
 cat("Rišem graf s podatki o plačah...\n")
 
 cairo_pdf("slike/Povprecne_place.pdf", family="Arial", onefile = TRUE)
-#Graf spreminjanja neto plače v regijah
 
+#Graf spreminjanja neto plače v regijah
 matplot(x_tocke,t(PovpR), type="b",col=barve, lty="solid",pch=1:12,
         main="Graf 7: Povprečna mesečna neto plača v regijah",
         xlab= "Leta 2005-2013", ylab= "Plača v EUR",
@@ -74,6 +74,8 @@ dev.off()
 cat("Rišem grafe z napovedmi...\n")
 
 #Povezave med podatki in napovedi
+
+#NAPOVED 1
 cairo_pdf("slike/Napovedi1.pdf", family="Arial", onefile = TRUE)
 attach(st_podjetij)
 attach(ZadRegije[-1,])
@@ -109,6 +111,7 @@ legend("topleft",legend=c("Linearna","Kvadratična"),lty="solid",col=c("blue","v
 detach(st_podjetij)
 dev.off()
 
+#NAPOVED 2
 cairo_pdf("slike/Napovedi2.pdf", family="Arial", onefile = TRUE)
 attach(st_zaposlenih)
 leta <-c(X2012,X2013)
@@ -145,6 +148,7 @@ dev.off()
 # abline(lm(zap_pod~zad),col="cyan")
 # legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
 
+#NAPOVED 3
 cairo_pdf("slike/Napovedi3.pdf", family="Arial", onefile = TRUE)
 attach(PovpR)
 povp.r <- c(X2012, X2013)
@@ -157,8 +161,6 @@ points(Povprecje.2012, X2012, col = "black",pch=19)
 legend("left",legend=c(2013,2012),pch=c(1,19),col="black")
 legend("topleft",legend=c("Linearna","Kvadratična","Loess","Prileganje z zlepki"),
        lty="solid",col=c("blue","violet","orange","green"),title="Prileganje podatkov:")
-# lin <- lm(X2013 ~ Povprecje.2013)
-# abline(lin, col="blue")
 
 lin2 <- lm(povp.r ~ zad)
 koef5 <- coefficients(lin2)
@@ -181,17 +183,7 @@ curve(napoved(x, lin2),col="blue",add=TRUE)
 curve(napoved(x, kv2),col="violet",add=TRUE)
 legend("topright",legend=c("Linearna","Kvadratična"),lty="solid",col=c("blue","violet"))
 detach(PovpR)
-#SE SPLAČA VKLJUČITI?
 
-# attach(EkoRast)
-# plot(Povprecje.2012,X2012, xlab= "Zadovoljstvo z življenjem",ylab="Ekonomska rast")
-# lin1 <- lm(X2012~Povprecje.2012)
-# abline(lin1, col="green")
-# predict(lin1, data.frame(Povprecje.2012=seq(100, 800, 100)))
-# dva <- lowess(Povprecje.2012, X2012)
-# points(dva, col = "purple", cex = 0.7,pch=9)
-# lines(dva, col = "purple")
-# detach(EkoRast)
 detach(ZadRegije[-1,])
 
 dev.off()

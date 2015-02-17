@@ -59,7 +59,7 @@ colnames(stanja2013) <- c("0-4 (%)","5-6 (%)","7-8 (%)","9-10 (%)")
 barplot(stanja2013, beside = TRUE, xlim= c(0,25),ylim= c(0,60),
         legend.text = c("Moški-Zelo dobro", "Moški-Zelo slabo","Ženske- Zelo dobro", "Ženske-Zelo slabo"),
         col = c("antiquewhite1","lavenderblush3","lavenderblush","lightpink3"),
-        main = "Graf 5: Zadovoljstvo z življenjem glede na zdravstveno stanje v letu 2013",
+        main = "Graf 5: Zadovoljstvo z življenjem \n glede na zdravstveno stanje v letu 2013",
         xlab = "Zadovoljstvo v procentih",ylab = "Število oseb")
 
 dev.off()
@@ -80,7 +80,7 @@ barplot(starosti2013,beside = TRUE, xlim = c(0,35),ylim=c(0,60),
         col = c("lightskyblue1","antiquewhite1","lavenderblush3","lavenderblush","lightpink3","lightgreen"),
         legend.text = c("Moški 16-25 let", "Moški 36-45 let", "Moški 55-65 let",
                         "Ženske 16-25 let", "Ženske 36-45 let", "Ženske 55-65 let"),
-        main = "Graf 6: Zadovoljstvo z življenjem glede na starost v letu 2013",
+        main = "Graf 6: Zadovoljstvo z življenjem glede \n na starost v letu 2013",
         ylab = "Število oseb",xlab = "Zadovoljstvo v procentih")
         
 

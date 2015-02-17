@@ -74,7 +74,7 @@ dev.off()
 cat("Rišem grafe z napovedmi...\n")
 
 #Povezave med podatki in napovedi
-cairo_pdf("slike/Napovedi.pdf", family="Arial", onefile = TRUE)
+cairo_pdf("slike/Napovedi1.pdf", family="Arial", onefile = TRUE)
 attach(st_podjetij)
 attach(ZadRegije[-1,])
 
@@ -85,27 +85,31 @@ plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Šte
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
 lin <-lm(leta~zad)
+koef <- coefficients(lin)
 abline(lin,col="blue")
 kv <-lm(leta~I(zad^2)+zad)
+koef1 <- coefficients(kv)
 curve(predict(kv,data.frame(zad=x)),add=TRUE,col="violet")
 
 library(mgcv)
 loess <- loess(leta~zad)
 curve(predict(loess, data.frame(zad=x)),add=TRUE,col="orange")
-legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
+legend("bottomright",legend=c(2013,2012),pch=c(1,19),col="black")
+legend("topleft",legend=c("Linearna","Kvadratična","Loess"),
+       lty="solid",col=c("blue","violet","orange"),title="Prileganje podatkov:")
 resid <- sapply(list(lin,kv,loess), function(x) sum(x$residuals^2)) #Tisti ki ima manj je boljši model
 napoved <- function(x, model){predict(model,data.frame(zad=x))}
 plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Število prebivalcev",
-     xlim=c(6.6,10),ylim=c(0.06,0.15))
+     xlim=c(6.6,10),ylim=c(0.06,0.15),main="Napoved 1")
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
 curve(napoved(x, lin),col="blue",add=TRUE)
 curve(napoved(x, kv),col="violet",add=TRUE)
-curve(napoved(x,loess),col="orange",add=TRUE)
-
+legend("topleft",legend=c("Linearna","Kvadratična"),lty="solid",col=c("blue","violet"))
 detach(st_podjetij)
+dev.off()
 
-
+cairo_pdf("slike/Napovedi2.pdf", family="Arial", onefile = TRUE)
 attach(st_zaposlenih)
 leta <-c(X2012,X2013)
 plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število zaposlenih/Število prebivalcev",
@@ -113,22 +117,26 @@ plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število zaposlenih/Š
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
 lin1 <-lm(leta~zad)
+koef3 <- coefficients(lin1)
 abline(lin1,col="blue")
 kv1 <-lm(leta~I(zad^2)+zad)
+koef4 <- coefficients(kv1)
 curve(predict(kv1,data.frame(zad=x)),add=TRUE,col="violet")
 loess1 <- loess(leta~zad)
 curve(predict(loess1, data.frame(zad=x)),add=TRUE,col="orange")
 resid1 <- sapply(list(lin1,kv1,loess1), function(x) sum(x$residuals^2))
-legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
-plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število podjetij/Število prebivalcev",
-     xlim=c(6.6,10),ylim=c(0.25,0.9))
+legend("left",legend=c(2013,2012),pch=c(1,19),col="black")
+legend("topleft",legend=c("Linearna","Kvadratična","Loess"),
+       lty="solid",col=c("blue","violet","orange"),title="Prileganje podatkov:")
+plot(range(zad),range(leta),"n",xlab="Zadovoljstvo",ylab="Število zaposlenih/Število prebivalcev",
+     xlim=c(6.6,10),ylim=c(0.25,0.9),main="Napoved 2")
 points(Povprecje.2012,X2012)
 points(Povprecje.2013,X2013,pch=19)
 curve(napoved(x, lin1),col="blue",add=TRUE)
 curve(napoved(x, kv1),col="violet",add=TRUE)
-curve(napoved(x,loess1),col="orange",add=TRUE)
+legend("topleft",legend=c("Linearna","Kvadratična"),lty="solid",col=c("blue","violet"))
 detach(st_zaposlenih)
-
+dev.off()
 # zap_pod <- c(as.numeric(zap.R[,5]),as.numeric(zap.R[,6]))
 # plot(range(zad),range(zap_pod),"n",
 #      xlab= "Zadovoljstvo",ylab="Število oseb, ki delajo na podjetje v regiji")
@@ -137,6 +145,7 @@ detach(st_zaposlenih)
 # abline(lm(zap_pod~zad),col="cyan")
 # legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
 
+cairo_pdf("slike/Napovedi3.pdf", family="Arial", onefile = TRUE)
 attach(PovpR)
 povp.r <- c(X2012, X2013)
 
@@ -145,32 +154,32 @@ plot(range(zad), range(povp.r), "n",
      main="Graf 14: Povezava med zadovoljstvom z življenjem \n in povprečno mesečno neto plačo v regijah") # pripravimo koordinatni sistem
 points(Povprecje.2013, X2013, col = "black")
 points(Povprecje.2012, X2012, col = "black",pch=19)
-legend("topleft",legend=c(2013,2012),pch=c(1,19),col="black")
+legend("left",legend=c(2013,2012),pch=c(1,19),col="black")
+legend("topleft",legend=c("Linearna","Kvadratična","Loess","Prileganje z zlepki"),
+       lty="solid",col=c("blue","violet","orange","green"),title="Prileganje podatkov:")
 # lin <- lm(X2013 ~ Povprecje.2013)
 # abline(lin, col="blue")
 
 lin2 <- lm(povp.r ~ zad)
+koef5 <- coefficients(lin2)
 abline(lin2,col="blue")
 kv2 <-lm(povp.r~I(zad^2)+zad)
+koef6 <-coefficients(kv2)
 curve(predict(kv2,data.frame(zad=x)),add=TRUE,col="violet")
 loess2 <- loess(povp.r~zad)
 curve(predict(loess2, data.frame(zad=x)),add=TRUE,col="orange")
 resid2 <- sapply(list(lin2,kv2,loess2), function(x) sum(x$residuals^2))
-
-#curve(predict(lin2,data.frame(zad=x)), add = TRUE)
-# kv <- lm(povp.r~ I(zad^2)+zad)
-# curve(predict(kv, data.frame(zad=x)), add = TRUE, col = "blue")
 tri <- lowess(zad,povp.r)
-# points(tri,col="green",pch=19)
 lines(tri, col="green")
-#curve(predict(tri,data.frame(zad=x)),add=TRUE,col="red")
-vsota.kvadratov <- sapply(list(lin2,tri),function(x) sum(x$residuals^2))
-# library(mgcv)
-# los <- loess(povp.r~zad)
-# curve(predict(los,data.frame(zad=x)),
-#               add=TRUE,col="cyan")
 
-
+napoved <- function(x, model){predict(model,data.frame(zad=x))}
+plot(range(zad),range(povp.r),"n",xlab="Zadovoljstvo",ylab="Povprečje neto mesečne plače",
+     xlim=c(6.6,10),ylim=c(900,1100),main="Napoved 3")
+points(Povprecje.2012,X2012)
+points(Povprecje.2013,X2013,pch=19)
+curve(napoved(x, lin2),col="blue",add=TRUE)
+curve(napoved(x, kv2),col="violet",add=TRUE)
+legend("topright",legend=c("Linearna","Kvadratična"),lty="solid",col=c("blue","violet"))
 detach(PovpR)
 #SE SPLAČA VKLJUČITI?
 

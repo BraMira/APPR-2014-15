@@ -159,8 +159,8 @@ plot(range(zad), range(povp.r), "n",
 points(Povprecje.2013, X2013, col = "black")
 points(Povprecje.2012, X2012, col = "black",pch=19)
 legend("left",legend=c(2013,2012),pch=c(1,19),col="black")
-legend("topleft",legend=c("Linearna","Kvadratična","Loess","Prileganje z zlepki"),
-       lty="solid",col=c("blue","violet","orange","green"),title="Prileganje podatkov:")
+legend("topleft",legend=c("Linearna","Kvadratična","Loess"),
+       lty="solid",col=c("blue","violet","orange"),title="Prileganje podatkov:")
 
 lin2 <- lm(povp.r ~ zad)
 koef5 <- coefficients(lin2)

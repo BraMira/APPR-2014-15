@@ -154,7 +154,7 @@ attach(PovpR)
 povp.r <- c(X2012, X2013)
 
 plot(range(zad), range(povp.r), "n",
-     xlab="Zadovoljstvo z življenjem",ylab="Povprečje neto mesečne plače",
+     xlab="Zadovoljstvo z življenjem",ylab="Povprečje neto mesečne plače (€)",
      main="Graf 14: Povezava med zadovoljstvom z življenjem \n in povprečno mesečno neto plačo v regijah") # pripravimo koordinatni sistem
 points(Povprecje.2013, X2013, col = "black")
 points(Povprecje.2012, X2012, col = "black",pch=19)
@@ -171,8 +171,8 @@ curve(predict(kv2,data.frame(zad=x)),add=TRUE,col="violet")
 loess2 <- loess(povp.r~zad)
 curve(predict(loess2, data.frame(zad=x)),add=TRUE,col="orange")
 resid2 <- sapply(list(lin2,kv2,loess2), function(x) sum(x$residuals^2))
-tri <- lowess(zad,povp.r)
-lines(tri, col="green")
+# tri <- lowess(zad,povp.r)
+# lines(tri, col="green")
 
 napoved <- function(x, model){predict(model,data.frame(zad=x))}
 plot(range(zad),range(povp.r),"n",xlab="Zadovoljstvo",ylab="Povprečje neto mesečne plače",
